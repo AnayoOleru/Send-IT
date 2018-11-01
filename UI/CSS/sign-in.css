@@ -9,6 +9,7 @@ body{
 	width: 80%;
 	margin: auto;
 	overflow: hidden;
+	/*position: relative;*/
 }
 
 ul{
@@ -91,6 +92,56 @@ header a:hover{
 #image .sign-in-btn:hover{
 	color: #ffffff;
 	background-color:#1f5582; 
+}
+/*sign-in box*/
+.contain{
+	display: none; /* Hidden by default */
+	top:22%;
+	left: 27%;
+	background-color:#1677c9;
+	color: #ffffff;
+	position: absolute;
+	width: 50%;
+	border: 1px solid #ffffff;
+	z-index: 1;
+	font-family: 'K2D', sans-serif;
+}
+
+
+#image .valid{
+	padding:10px 25px;
+	text-align: center;
+	font-size: 100%;
+	font-weight: bold;
+	font-family: 'K2D', sans-serif;
+
+}
+#image .one{
+ border: 1px blue solid;
+ background-color:#c16f03;
+ font-size: 20px; 
+}
+
+#image .four{
+	color: red;
+	text-decoration: none;
+	margin-top: 15px;
+	margin-right:120px ;
+	float: right;
+
+}
+#image .five a{
+	color: #870808;
+
+}
+#image .six{
+    margin-bottom: 10px;
+	height: 55px;
+	padding-left: 35px; 
+	padding-right:35px;
+	border: 0;
+	color: white;
+	background-color:#c16f03; 
 }
 
 /*get started or the information boxes*/
