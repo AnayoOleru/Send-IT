@@ -1,0 +1,205 @@
+
+body{
+    font-family: 'K2D', sans-serif;
+    padding: 0;
+    margin: 0;
+    background-color: #1677c9;
+}
+
+.container{
+    width: 80%;
+    padding: 16px;
+    margin: auto;
+    overflow: hidden;
+    color: #ffffff;
+    /*position: relative;*/
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+}
+
+/*header*/
+header{
+    background:#1f5582;
+    color:#ffffff;
+    padding-top: 30px;
+    min-height: 70px;
+    border-bottom: #c16f03 3px solid;
+}
+
+header a{
+    color: white; /*change */
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+header li{
+    float: left;
+    display: inline;
+    padding: 0 20px 0 20px;
+}
+
+header #logo{
+    float: left;
+}
+
+header #logo h1{
+    margin: 0;
+}
+
+header nav{
+    float: right;
+    margin-top: 10px;
+}
+
+header .logoColor, header .home a{
+    color: #c16f03;
+    font-weight: bold;
+}
+
+header a:hover{
+    color: #cccccc;
+}
+
+.sidebar{
+  position: relative;
+  width: 300px;
+  height: 500px;
+  background:#1f5582; 
+}
+.sidebar2{
+  position: absolute;
+  bottom: -80px;
+  left: 310px;
+  margin-bottom: 80px;
+  float: right;
+  width: 700px;
+  height: 80%;
+  background:#1f5582;
+}
+
+.sidebar h5{
+  font-weight: bold;
+  font-size: 30px;
+  position: relative;
+  bottom: 50px;
+}
+
+.sidebar ul li{
+  color: #ffffff;
+  text-align: center;
+  color: #ffffff;
+  text-decoration: none;
+  list-style: none;
+  padding: 10px 10px;
+  
+
+}
+.sidebar ul li a{
+  position: relative;
+  color: #ffffff;
+  font-size: 20px;
+  text-decoration: none;
+  bottom: 70px;
+  border-bottom: 1px solid  #c16f03;
+}
+
+.sidebar ul li a:hover{
+  color:  #c16f03;
+  font-weight: bold;
+  border-bottom: 1px solid #ffffff;
+}
+.sidebar ul li img{
+  width: 50%;
+  margin:0;
+  padding: 0;
+}
+
+.sidebar ul li a button{
+  background-color: #c16f03;
+  color: #ffffff;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  font-weight: bold;
+}
+.sidebar ul li a button:focus
+.sidebar ul li a button:hover{
+  background-color: #ffffff;
+  color: #1f5582;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  font-weight: bold;
+}
+
+#page1{
+  width: 70%;
+  height: 200px;
+  left: 15%;
+  bottom: 29%;
+  position: absolute;
+  background-color: white;
+  text-align: center;
+  
+}
+
+.bothParcels{
+  display: inline-block;
+  padding: 20px;
+}
+
+.bothParcels h3{
+  font-size: 30px;
+}
+.bothParcels span{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#page2{
+  text-align: center;
+  background-color: #caccce;
+  width: 100%;
+  border-bottom: 1px solid black;
+
+}
+.nav-wrapper #title{
+  font-weight: bold;
+  font-size: 30px;
+}
+
+#btn{
+ background-color: #c16f03;
+  color: #ffffff;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  font-weight: bold;: 
+}
+
+#btn:hover{
+ background-color:#ffffff;
+  color: #c16f03; 
+}
+#page3{
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  color: #ffffff;
+  bottom: 50; 
+}
+
+#page3 #titleThird{
+  border: 1px #c16f03 solid;
+  background-color: #c16f03;
+}
