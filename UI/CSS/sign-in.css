@@ -1,0 +1,180 @@
+body{
+	font-family: 'K2D', sans-serif;
+	padding: 0;
+	margin: 0;
+	background-color: #1677c9;
+}
+
+.container{
+	width: 80%;
+	margin: auto;
+	overflow: hidden;
+	/*position: relative;*/
+}
+
+ul{
+	margin: 0;
+	padding: 0;
+}
+
+/*header*/
+header{
+	background:#1f5582;
+	color:#ffffff;
+	padding-top: 30px;
+	min-height: 70px;
+	border-bottom: #c16f03 3px solid;
+}
+
+header a{
+	color: white; /*change */
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 16px;
+}
+
+header li{
+	float: left;
+	display: inline;
+	padding: 0 20px 0 20px;
+}
+
+header #logo{
+	float: left;
+}
+
+header #logo h1{
+	margin: 0;
+}
+
+header nav{
+	float: right;
+	margin-top: 10px;
+}
+
+header .logoColor, header .home a{
+	color: #c16f03;
+	font-weight: bold;
+}
+
+header a:hover{
+	color: #cccccc;
+}
+
+/*picture*/
+#image{
+	min-height: 400px;
+	background: url('../img/courier-service.jpg') no-repeat;
+	background-size: cover;
+	text-align: left;
+	filter: brightness(90%);
+}
+#image h1{
+	margin-top: 100px;
+	font-size: 55px;
+	margin-bottom: 10px;
+	color:#191717;
+}
+#image p{
+	font-size: 20px; 
+}
+
+#image .sign-in-btn{
+	margin-top: 40px;
+	height: 55px;
+	padding-left: 35px; 
+	padding-right:35px;
+	border: 0;
+	color: white;
+	background-color:#c16f03; 
+}
+
+#image .sign-in-btn:hover{
+	color: #ffffff;
+	background-color:#1f5582; 
+}
+/*sign-in box*/
+.contain{
+	display: none; /* Hidden by default */
+	top:22%;
+	left: 27%;
+	background-color:#1677c9;
+	color: #ffffff;
+	position: absolute;
+	width: 50%;
+	border: 1px solid #ffffff;
+	z-index: 1;
+	font-family: 'K2D', sans-serif;
+}
+
+
+#image .valid{
+	padding:10px 25px;
+	text-align: center;
+	font-size: 100%;
+	font-weight: bold;
+	font-family: 'K2D', sans-serif;
+
+}
+#image .one{
+ border: 1px blue solid;
+ background-color:#c16f03;
+ font-size: 20px; 
+}
+
+#image .four{
+	color: red;
+	text-decoration: none;
+	margin-top: 15px;
+	margin-right:120px ;
+	float: right;
+
+}
+#image .five a{
+	color: #870808;
+
+}
+#image .six{
+    margin-bottom: 10px;
+	height: 55px;
+	padding-left: 35px; 
+	padding-right:35px;
+	border: 0;
+	color: white;
+	background-color:#c16f03; 
+}
+
+/*get started or the information boxes*/
+#details{
+	margin-top: 20px;
+}
+#details .detailTxt{
+	text-align: center;
+	color: #ffffff;
+	font-size: 40px;
+}
+
+#details .square{
+	text-align: center;
+	color: #ffffff;
+	float: left;
+	padding: 10px;
+	width: 30%;
+}
+
+#details .square img{
+	width: 95px;
+}
+
+/*@media (max-width: 100px;){
+
+}*/
+
+/*footer*/
+footer{
+	padding: 20px;
+	margin-top: 20px;
+	color: white;
+	background-color: #1f5582;
+	text-align: center;
+}
