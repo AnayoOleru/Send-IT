@@ -4,7 +4,7 @@ import users from './src/router/userRouter';
 import parcels from './src/router/parcelRouter';
 
 const app = express();
-
+// middlewares
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
