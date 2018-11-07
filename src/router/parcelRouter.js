@@ -12,6 +12,7 @@ router
   .route('')
   .get(getParcels)
   .post(createParcel);
+
 // cancel the specific parcel delivery order
 router
   .route('/:parcelId/cancel')
