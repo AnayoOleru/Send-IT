@@ -31,7 +31,7 @@ export default {
 
     return res.status(201).json(parcelsDb);
   },
-
+  // logic for PUT/parcels
   cancelParcel(req, res) {
     const parcel = parcels;
     const { parcelId } = req.params;
