@@ -18,4 +18,9 @@ router
   .route('/:parcelId/cancel')
   .put(cancelParcel);
 
+//
+router
+  .route('/:parcelId')
+  .get(getParcelById);
+
 export default router;
