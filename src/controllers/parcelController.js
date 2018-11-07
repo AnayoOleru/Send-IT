@@ -2,10 +2,12 @@ import { randomBytes } from 'crypto';
 import parcels from '../db/parcel';
 
 export default {
+  // created logic to get all parcel delivery for parcelrouter
   getParcels(req, res) { return res.json(parcels); },
 
   getParcelById(req, res) { return res.json(req.parcel); },
 
+  // created logic to create delivery orders
   createParcel(req, res) {
     const {
       userId,
@@ -18,6 +20,7 @@ export default {
     const parcelsDb = parcels;
     const parcelId = randomBytes(5).toString('hex');
 
+    // json start status for the PUT/parcels status
     parcelsDb[parcelId] = {
       id: parcelId,
       userId,
@@ -31,7 +34,7 @@ export default {
 
     return res.status(201).json(parcelsDb);
   },
-  // logic for PUT/parcels
+  // logic/continuation for PUT/parcels
   cancelParcel(req, res) {
     const parcel = parcels;
     const { parcelId } = req.params;
