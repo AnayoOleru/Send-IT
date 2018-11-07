@@ -4,8 +4,11 @@ import parcels from '../db/parcel';
 export default {
   // created logic to get all parcel delivery for parcelrouter
   getParcels(req, res) { return res.json(parcels); },
-
-  getParcelById(req, res) { return res.json(req.parcel); },
+  // logic to get specific parcel by id
+  getParcelById(req, res) {
+    const { parcelId } = req.params;
+    res.json(parcels[parcelId]);
+  },
 
   // created logic to create delivery orders
   createParcel(req, res) {
