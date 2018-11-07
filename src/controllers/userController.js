@@ -1,29 +1,33 @@
 import { randomBytes } from 'crypto';
-import users from '../users';
+import users from '../db/users';
 
-export const getUsers = (req, res) => res.json(users);
+export default {
+  getUsers(req, res) {
+    return res.json(users);
+  },
 
-export const createUser = (req, res) => {
-  const { name = '', email, password } = req.body;
-// if email is not available
-  if (!email || !password) {
-    return res
-      .status(401)
-      .json({ error: { message: 'Email and password are required to signup.' } });
+  createUser(req, res) {
+    const { name = '', email, password } = req.body;
+    // if email is not available
+    if (!email || !password) {
+      return res
+        .status(401)
+        .json({ error: { message: 'Email and password are required to signup.' } });
+    }
+    // checks if email is available
+    const emailAvaiable = Object.entries(users).every(([key, val]) => val.email !== email);
+
+    if (!emailAvaiable) return res.status(409).json({ error: { message: 'Email is already registered.' } });
+
+    const randomId = randomBytes(4).toString('hex');
+    const newUser = {
+      id: randomId,
+      name,
+      password,
+      email,
+    };
+
+    users[randomId] = newUser;
+    res.status(201).json(newUser);
   }
-// checks if email is available
-  const emailAvaiable = Object.entries(users).every(([key, val]) => val.email !== email);
-
-  if (!emailAvaiable) return res.status(409).json({ error: { message: 'Email is already registered.' } });
-
-  const randomId = randomBytes(4).toString('hex');
-  const newUser = {
-    id: randomId,
-    name,
-    password,
-    email,
-  };
-
-  users[randomId] = newUser;
-  res.status(201).json(newUser);
 };

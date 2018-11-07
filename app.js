@@ -1,5 +1,5 @@
 import bodyParser from 'body-parser';
-import express from 'express'; 
+import express from 'express';
 import users from './src/router/userRouter';
 import parcels from './src/router/parcelRouter';
 
@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use('/api/v1', users);
-app.use('/api/v1/parcels', parcels)
+app.use('/api/v1/parcels', parcels);
 
 app.get('*', (req, res) => {
   res.send('Hello-world');
