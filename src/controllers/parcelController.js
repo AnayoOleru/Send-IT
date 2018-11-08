@@ -7,7 +7,7 @@ export default {
   // logic to get specific parcel by id
   getParcelById(req, res) {
     const { parcelId } = req.params;
-    res.json(parcels[parcelId]);
+    return res.json(parcels[parcelId]);
   },
 
   // created logic to create delivery orders
@@ -48,9 +48,9 @@ export default {
   }
 
   // deleteParcel = (req, res) {
-  //   const parcels = { ...parcels };
+  //   const parcels = {parcels};
 
-  //   delete parcels[req.parcel.id];
+  //   delete parcels[parcel.id];
   //   parcels = parcels;
 
   //   res.json(req.parcel);
