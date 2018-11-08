@@ -19,7 +19,7 @@ export default {
         .json({ error: { message: 'Email and password are required to signup.' } });
     }
     // checks if email is available
-    const emailAvaiable = Object.entries(users).every(([key, val]) => val.email !== email);
+    const emailAvaiable = Object.entries(users).every(([val]) => val.email !== email);
 
     if (!emailAvaiable) return res.status(409).json({ error: { message: 'Email is already registered.' } });
 
