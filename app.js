@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-app.use('/api/v1', users);
+app.use('/api/v1/users', users);
 app.use('/api/v1/parcels', parcels);
 
 app.get('*', (req, res) => {
