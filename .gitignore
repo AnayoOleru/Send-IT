@@ -1,3 +1,5 @@
+#used rest client for testing
+test.http
 # Logs
 logs
 *.log
