@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+  - 'node'
+cache:
+  directories:
+    - node_modules
+notifications:
+  email: false
+# safelist
+branches:
+  only:
+    - master
+    - feat/api-endpoints
+
+
+    
