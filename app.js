@@ -1,7 +1,7 @@
-import bodyParser from 'body-parser';
-import express from 'express';
-import users from './src/router/userRouter';
-import parcels from './src/router/parcelRouter';
+const bodyParser = require('body-parser');
+const express = require('express');
+const users = require('./src/router/userRouter');
+const parcels = require('./src/router/parcelRouter');
 
 const app = express();
 // middlewares
