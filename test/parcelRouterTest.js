@@ -53,4 +53,42 @@ describe('/api/v1/parcels', () => {
         .catch(done);
     });
   });
+
+  //   test to place new parcel delivery orders
+  describe('POST /', () => {
+    it('should not allow unauthorized user to place order', (done) => {
+      requester
+        .post(ENDPOINT)
+        .then((res) => {
+          res.status.should.be.equal(401);
+          done();
+        })
+        .catch(done);
+    });
+
+    it('should place order for logged/authorized user', (done) => {
+      requester
+        .post(ENDPOINT)
+        .set('Authorization', userToken)
+        .then((res) => {
+          res.status.should.be.equal(201);
+          done();
+        })
+        .catch(done);
+    });
+
+    it('size should increase by 1', (done) => {
+      requester
+        .get(ENDPOINT)
+        .set('Authorization', adminToken)
+        .then((res) => {
+          const actualLength = Object.keys(res.body).length;
+          expect(actualLength)
+            .to.be.a('number')
+            .that.equals(orders + 1);
+          done();
+        })
+        .catch(done);
+    });
+  });
 });
