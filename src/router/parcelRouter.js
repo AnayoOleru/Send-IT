@@ -1,7 +1,7 @@
-import express from 'express';
+import { Router } from 'express';
 import parcels from '../controllers/parcelController';
 
-const router = express.Router();
+const router = Router();
 const {
   getParcels, createParcel, getParcelById, cancelParcel
 } = parcels;
@@ -23,4 +23,5 @@ router
   .route('/:parcelId')
   .get(getParcelById);
 
+// export default router;
 export default router;
