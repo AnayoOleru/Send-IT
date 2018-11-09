@@ -10,7 +10,7 @@ notifications:
 branches:
   only:
     - master
-    - feat/api-endpoints
+    - 161846100-integrate-travis-ci
 
 
     
