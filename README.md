@@ -1,7 +1,9 @@
 # Send-IT
 [![Build Status](https://travis-ci.org/AnayoOleru/Send-IT.svg?branch=161846100-integrate-travis-ci)](https://travis-ci.org/AnayoOleru/Send-IT)
-![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
-![Packagist](https://img.shields.io/packagist/v/symfony/symfony.svg)
+![GitHub](https://img.shields.io/github/license/AnayoOleru/Send-IT/apistatus.svg)
+![Packagist](https://img.shields.io/packagist/v/AnayoOleru/Send-IT.svg)
+![Code Climate coverage](https://img.shields.io/codeclimate/coverage/AnayoOleru/Send-IT.svg)
+
 
 
 SendIT is a courier service that helps users deliver parcels to different destinations
