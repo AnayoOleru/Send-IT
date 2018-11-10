@@ -1,4 +1,9 @@
 # Send-IT
+[![Build Status](https://travis-ci.org/AnayoOleru/Send-IT.svg?branch=161846100-integrate-travis-ci)](https://travis-ci.org/AnayoOleru/Send-IT)
+
+![GitHub](https://img.shields.io/github/license/AnayoOleru/Send-IT/apistatus.svg)
+https://img.shields.io/packagist/v/AnayoOleru/Send-IT.svg
+
 SendIT is a courier service that helps users deliver parcels to different destinations
 
 ## Introduction
