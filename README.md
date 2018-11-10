@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/AnayoOleru/Send-IT.svg?branch=161846100-integrate-travis-ci)](https://travis-ci.org/AnayoOleru/Send-IT)
 ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
 ![Packagist](https://img.shields.io/packagist/v/symfony/symfony.svg)
-[![Coverage Status](https://coveralls.io/repos/github/AnayoOleru/Send-IT/badge.svg?branch=feature)](https://coveralls.io/github/AnayoOleru/Send-IT?branch=feature)
+[![Coverage Status](https://coveralls.io/repos/github/AnayoOleru/Send-IT/badge.svg?branch=161846100-integrate-travis-ci)](https://coveralls.io/github/AnayoOleru/Send-IT?branch=161846100-integrate-travis-ci)
 
 
 
