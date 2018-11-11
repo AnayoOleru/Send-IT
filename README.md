@@ -8,6 +8,11 @@
 
 SendIT is a courier service that helps users deliver parcels to different destinations
 
+Template on github:
+```  
+https://anayooleru.github.io/Send-IT/
+``` 
+
 ## Introduction
 Welcome to version 1 of Send-IT (ST) API. Below you will find a current list of available methods on different endpoints.
 
