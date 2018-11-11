@@ -40,7 +40,7 @@ $ npm start
 $ npm run test
 ```
 ## API Usage
-API BASE URL     
+API BASE URL  ```https://desolate-meadow-95059.herokuapp.com/api/ ```  
 
 ## Endpoints ``` /api/v1/parcels```
 | method |	route	                | description                    |
