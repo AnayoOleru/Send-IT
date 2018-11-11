@@ -17,6 +17,9 @@ app.get('*', (req, res) => {
   res.send('Hello-world');
 });
 
-app.listen(3000, () => {
-  console.log('server started on port 3000...');
+app.set('port', (process.env.PORT || 3000));
+
+// Start node server
+app.listen(app.get('port'), () => {
+  console.log(`Node server is running on port ${app.get('port')}`);
 });
