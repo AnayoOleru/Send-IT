@@ -1,94 +1,75 @@
+import chai from 'chai';
 import chaiHttp from 'chai-http';
-
-import chai, { use, should as _should, request } from 'chai';
 import app from '../app';
-import { parcels } from '../db/parcel';
 
+const should = chai.should();
+const { expect, assert } = chai;
 
-use(chaiHttp);
+const apiVersion = '/api/v1';
 
-const { expect } = chai;
-const should = _should(); // eslint-disable-line
-const requester = null;
-const ENDPOINT = '/api/v1/parcels';
+chai.use(chaiHttp);
 
-describe('/api/v1/parcels', () => {
-  const parcels = 0;
-  const userToken = null;
-  const adminToken = null;
+// Test for parcels routes //
 
-  describe('GET /', () => {
-    it('should get all parcels', (done) => {
-      requester
-        .get(ENDPOINT)
-        .then((res) => {
-          res.body.should.be.a('object');
-          done();
-        })
-        .catch(done);
-    });
+describe('## /GET parcels without Authorization header', () => {
+  it('should GET all the parcels', (done) => {
+    chai.request(app)
+      .get(`${apiVersion}/parcels`)
+      .end((err, res) => {
+        res.should.have.status(401);
+        done();
+      });
   });
+});
 
-  // to change the status of delivery order
-  describe('PUT /:id', () => {
-    it('should not update order without status param in req.body', (done) => {
-      requester
-        .put(`${ENDPOINT}/1`)
-        .then((res) => {
-          res.status.should.be.equal(400);
-          done();
-        })
-        .catch(done);
-    });
-
-    it('should update order status', (done) => {
-      requester
-        .put(`${ENDPOINT}/1`)
-        .send({ status: 'decline' })
-        .then((res) => {
-          res.status.should.be.equal(200);
-          expect(res.body).to.have.property('status', 'decline');
-          done();
-        })
-        .catch(done);
-    });
+// get all parcel delivery orders
+describe('## /GET parcels with Authorization header', () => {
+  it('should GET all the parcels', (done) => {
+    chai.request(app)
+      .get(`${apiVersion}/parcels`)
+      .set('Authorization', 'Bearer a41f8a8dbb67735da4d0f1ac100975ea3dc1409b022d4043d8584f0a18c3efbe')
+      .end((err, res) => {
+        res.should.have.status(200);
+        done();
+      });
   });
+});
 
-  //   test to place new parcel delivery orders
-  describe('POST /', () => {
-    it('should not allow unauthorized user to place order', (done) => {
-      requester
-        .post(ENDPOINT)
-        .then((res) => {
-          res.status.should.be.equal(401);
-          done();
-        })
-        .catch(done);
-    });
+// test create parcel routes
+describe('## /POST create new parcel delivery order without Authorization header', () => {
+  it('should POST a new parcel', (done) => {
+    chai.request(app)
+      .post(`${apiVersion}/parcels`)
+      .end((err, res) => {
+        res.should.have.status(401);
+        done();
+      });
+  });
+});
 
-    it('should place order for logged/authorized user', (done) => {
-      requester
-        .post(ENDPOINT)
-        .set('Authorization', userToken)
-        .then((res) => {
-          res.status.should.be.equal(201);
-          done();
-        })
-        .catch(done);
-    });
+// to fetch a specific delivery order by its ID
+describe('## /GET parcels/:orderId', () => {
+  const orderId = '001';
+  it('should GET a specific delivery order by its ID', (done) => {
+    chai.request(app)
+      .get(`${apiVersion}/parcels/${orderId}`)
+      .set('Authorization', 'Bearer a41f8a8dbb67735da4d0f1ac100975ea3dc1409b022d4043d8584f0a18c3efbe')
+      .end((err, res) => {
+        res.should.have.status(200);
+        done();
+      });
+  });
+});
 
-    it('size should increase by 1', (done) => {
-      requester
-        .get(ENDPOINT)
-        .set('Authorization', adminToken)
-        .then((res) => {
-          const actualLength = Object.keys(res.body).length;
-          expect(actualLength)
-            .to.be.a('number')
-            .that.equals(orders + 1);
-          done();
-        })
-        .catch(done);
-    });
+
+// for cancelling a parcel delivery order
+describe('## /PUT parcels/:parcelId/cancel without Authorization header', () => {
+  it('should cancel a parcel delivery order', (done) => {
+    chai.request(app)
+      .put(`${apiVersion}/parcels/:parcelId/cancel`)
+      .end((err, res) => {
+        res.should.have.status(401);
+        done();
+      });
   });
 });
