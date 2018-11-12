@@ -1,73 +1,25 @@
+
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import server from '../src/server';
-import store from '../src/store';
+import app from '../app';
+
+const should = chai.should(); // disable eslint
+const { expect, assert } = chai; // disable eslint
+
+const apiVersion = '/api/v1';
 
 chai.use(chaiHttp);
 
-const { expect } = chai;
-const should = chai.should(); // eslint-disable-line
-const requester = null;
-const ENDPOINT = '/api/v1/users';
-
-// this is to get all users's specific parcels
-
-describe('/api/v1/users', () => {
-  const userToken = null;
-  const adminToken = null; //eslint-disable-line
-
-  describe('GET /:id/orders', () => {
-    before(() => {
-      store.orders = {}; // clear orders
-    });
-
-    it('should error for unauthorized users', (done) => {
-      requester
-        .get(`${ENDPOINT}/12233/orders`)
-        .then((res) => {
-          expect(res.status).to.equal(401);
-          done();
-        })
-        .catch(done);
-    });
-
-    it('should get order history for authenticated user', (done) => {
-      requester
-        .get(`${ENDPOINT}/12233/orders`)
-        .set('Authorization', userToken)
-        .then((res) => {
-          res.body.should.be.a('array').that.is.empty; // eslint-disable-line
-          done();
-        })
-        .catch(done);
-    });
-  });
-
-//   to get a specific user parcels
-describe('GET /:id/orders', () => {
-    before(() => {
-      store.orders = {}; // clear orders
-    });
-
-    it('should error for unauthorized users', (done) => {
-      requester
-        .get(`${ENDPOINT}/12233/orders`)
-        .then((res) => {
-          expect(res.status).to.equal(401);
-          done();
-        })
-        .catch(done);
-    });
-
-    it('should get order history for authenticated user', (done) => {
-      requester
-        .get(`${ENDPOINT}/12233/orders`)
-        .set('Authorization', userToken)
-        .then((res) => {
-          res.body.should.be.a('array').that.is.empty; // eslint-disable-line
-          done();
-        })
-        .catch(done);
-    });
+// fetch all parcel delivery order by a user
+describe('/GET /:userId/parcels', () => {
+  const userId = '45547';
+  it('should fetch all parcel delivery order by an user', (done) => {
+    chai.request(app)
+      .get(`${apiVersion}/user/${userId}/parcels`)
+      .set('Authorization', 'Bearer a41f8a8dbb67735da4d0f1ac100975ea3dc1409b022d4043d8584f0a18c3efbe')
+      .end((err, res) => {
+        res.should.have.status(200);
+        done();
+      });
   });
 });
