@@ -33,7 +33,7 @@ To work with this project you need to have the following installed on your local
 
 $ git clone 
 ``` https://github.com/AnayoOleru/Send-IT.git```
-$ cd fast-food-fast
+$ cd Send-IT
 
 
 $ npm install
