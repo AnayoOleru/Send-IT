@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Send-IT | Register</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" type="text/css" href="./CSS/newOrder.css">
+	<link href="https://fonts.googleapis.com/css?family=K2D|Patrick+Hand" rel="stylesheet">
+</head>
+<body>
+
+		<div class="wrapper">
+			<!-- navbar -->
+			<header class="header">
+				<div class="brand">
+					<a href="../index.html" class="brand__name">Send-IT</a>
+				</div>
+				<!-- nav links are hidden(mobile) until onclicked.But the nav-link are visible(desktop) -->
+				<nav class="nav">
+					<ul class="nav__links">
+						<li onclick="(function () { document.querySelector('.nav').style.display = 'none'; }())" class="close-nav">&times;</li>
+						<li class="nav__link"><a class="nav__link--link" href="#">Home</a></li>
+                        <li class="nav__link"><a class="nav__link--link" href="#">Create a new order</a></li>
+                        <li class="nav__link"><a class="nav__link--link" href="#">My Orders</a></li>
+					</ul>
+				</nav>
+	
+				<!-- menu bars. When clicked on, nav class properties is visible -->
+				<div class="hamburger" onclick="(function () {document.querySelector('.nav').style.display = 'block'; })()">
+					<div></div>
+					<div></div>
+					<div></div> 
+				</div>
+			</header>
+	
+            <div class="content">
+                <div class="hero">
+                    <div class="hero__container container">
+                        <div class="hero__info">
+                            <h1 class="hero__title">Customer</h1>
+                            <h2 class="hero__sub-title">Phone-number</h2>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+				<main role="main" class="main">
+                    <h2>Parcels</h2>
+						<form action="#" class="login">
+							<div class="input-group">
+								<label for="from" class="input-group__label">Parcels Delivered:</label>
+                                <br><h1>0</h1>
+                                
+
+							</div>
+							<br>
+							<br>
+                            <div class="input-group">
+                                    <label for="from" class="input-group__label">Parcels yet to be Delivered:</label>
+                                    <br><h1>0</h1>
+    
+							</div>
+						</form>
+					</main>
+
+
+			</div>
+			<footer>
+				<p>Send-IT, copyright ©
+									<script>
+										document.write(new Date().getFullYear())
+									</script></p>
+			</footer>
+		</div>
+	
+		<script defer src="#"></script>
+	</body>
+</html>
