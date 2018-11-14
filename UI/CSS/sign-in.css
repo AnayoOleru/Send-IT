@@ -177,10 +177,6 @@ input[type=email], input[type=password] {
     box-sizing: border-box;
 }
 
-.container {
-    padding: 16px;
-}
-
 /*footer*/
 footer{
 	padding: 20px;

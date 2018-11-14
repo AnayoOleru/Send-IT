@@ -15,14 +15,16 @@
 				<div class="brand">
 					<a href="../index.html" class="brand__name">Send-IT</a>
 				</div>
+
 				<!-- nav links are hidden(mobile) until onclicked.But the nav-link are visible(desktop) -->
 				<nav class="nav">
 					<ul class="nav__links">
 						<li onclick="(function () { document.querySelector('.nav').style.display = 'none'; }())" class="close-nav">&times;</li>
 						<li class="nav__link"><a class="nav__link--link" href="login.html">Sign-in</a></li>
-						<li class="nav__link"><a class="nav__link--link" href="sign-up.html">Register</a></li>
-					</ul>
+            <li class="nav__link"><a class="nav__link--link" href="sign-up.html">Register</a></li>
+            </ul>
 				</nav>
+			
 	
 				<!-- menu bars. When clicked on, nav class properties is visible -->
 				<div class="hamburger" onclick="(function () {document.querySelector('.nav').style.display = 'block'; })()">

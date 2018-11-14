@@ -1,4 +1,5 @@
 
+
   * {
     margin: 0;
     padding: 0;
@@ -27,11 +28,7 @@
     padding: 1rem 1.8rem;
     position: relative;
     background:#1f5582;
-	color:#ffffff;
-	padding-top: 30px;
-	min-height: 70px;
-	border-bottom: #c16f03 3px solid;
-  }
+}
 
   /* send-IT title positioning */
   .page-title {
@@ -246,8 +243,4 @@
 	background-color: #1f5582;
 	text-align: center;
 }
-  
 
-
-  
-  
