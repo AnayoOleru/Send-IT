@@ -2,7 +2,7 @@ import { randomBytes } from 'crypto';
 import users from '../db/users';
 import parcels from '../db/parcel';
 
-class Reflection {
+class userController {
   // logic to get all users
   getUsers(req, res) {
     return res.json(users);

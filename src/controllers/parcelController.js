@@ -1,7 +1,7 @@
 import { randomBytes } from 'crypto';
 import parcels from '../db/parcel';
 
-class Reflection {
+class parcelController {
   // created logic to get all parcel delivery for parcelrouter
   getParcels(req, res) { return res.json(parcels); },
   // logic to get specific parcel by id
@@ -36,7 +36,7 @@ class Reflection {
     };
 
     return res.status(201).json(parcelsDb);
-  },
+  }
   // logic/continuation for PUT/parcels
   cancelParcel(req, res) {
     const parcel = parcels;
