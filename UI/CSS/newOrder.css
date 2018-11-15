@@ -15,14 +15,13 @@ body {
   font-weight: 400;
   line-height: 1.6em;
   font-size: 1.4rem;
-  /* color: #707070; */
+  color: #707070;
 }
 
 header .logoColor{
   color: #c16f03;
   font-weight: bold;
 }
-
 
 header.header {
   
@@ -32,10 +31,10 @@ header.header {
   padding: 1rem 1.8rem;
   position: relative;
   background:#1f5582;
-  color:#ffffff;
-  padding-top: 30px;
-  min-height: 70px;
-  border-bottom: #c16f03 3px solid;
+color:#ffffff;
+padding-top: 30px;
+min-height: 70px;
+border-bottom: #c16f03 3px solid;
 }
 
 /* send-IT title positioning */
@@ -48,7 +47,7 @@ header.header {
 
 .page-title > * {
   font-size: 0.85rem;
-  color: #333;
+  color: #1f5582;
 }
 main.main {
   padding: 1.8rem;
@@ -227,6 +226,7 @@ main.main {
     background: #1f5582;
     display: block;
   }
+
 }
 
 @media screen and (max-width: 425px) {
@@ -237,16 +237,18 @@ main.main {
     display: block;
     width: 100%;
   }
+  .hero {
+      padding: 3rem 3rem 5rem;
+    }
+    .hero__title {
+      font-size: 2.5rem;
+    }
 }
 
 .result {
   font-weight: bold;
   font-size: 1.3rem;
   margin-top: 0.8rem;
-}
-.container{
-  text-align: center;
-  margin-top: 20px;
 }
 
 footer{
@@ -255,4 +257,51 @@ margin-top: 1px;
 color: white;
 background-color: #1f5582;
 text-align: center;
+}
+
+
+.hero__image {
+  display: none;
+}
+
+.hero {
+  min-height: 30rem;
+  background: url('../img/dark-brown-wood.jpg') repeat center fixed;
+  color: #fff;
+  display: flex;
+  text-align: center;
+}
+
+.hero__container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.hero__info {
+  flex: 1;
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.hero__image {
+  flex: 0 0 auto;
+  width: 17rem;
+}
+
+.hero__title,
+.hero__sub-title {
+  color: #f0eeee;
+  font-weight: 400;
+  line-height: 1em;
+  text-transform: capitalize;
+}
+
+.hero__title {
+  font-size: 6rem;
+}
+
+.hero__sub-title {
+  font-size: 1.7rem;
+  margin-top: 0.8rem;
 }

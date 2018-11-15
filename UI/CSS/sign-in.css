@@ -1,5 +1,4 @@
-
-body{
+ body{
 	font-family: 'K2D', sans-serif;
 	padding: 0;
 	margin: 0;
@@ -94,19 +93,6 @@ header a:hover{
 	color: #ffffff;
 	background-color:#1f5582; 
 }
-/*sign-in box*/
-.contain{
-	display: none; /* Hidden by default */
-	top:22%;
-	left: 27%;
-	background-color:#1677c9;
-	color: #ffffff;
-	position: absolute;
-	width: 50%;
-	border: 1px solid #ffffff;
-	z-index: 1;
-	font-family: 'K2D', sans-serif;
-}
 
 
 #image .valid{
@@ -175,6 +161,10 @@ input[type=email], input[type=password] {
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
+}
+
+.container {
+    padding: 16px;
 }
 
 /*footer*/

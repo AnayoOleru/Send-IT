@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Send-IT | Register</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" type="text/css" href="./CSS/myOrders.css">
+	<link href="https://fonts.googleapis.com/css?family=K2D|Patrick+Hand" rel="stylesheet">
+</head>
+<body>
+
+		<div class="wrapper">
+			<!-- navbar -->
+			<header class="header">
+				<div class="brand">
+					<a href="../index.html" class="brand__name"><span class="logoColor">Send</span>-IT</a>
+				</div>
+				<!-- nav links are hidden(mobile) until onclicked.But the nav-link are visible(desktop) -->
+				<nav class="nav">
+					<ul class="nav__links">
+						<li onclick="(function () { document.querySelector('.nav').style.display = 'none'; }())" class="close-nav">&times;</li>
+						<li class="nav__link"><a class="nav__link--link" href="../index.html">Home</a></li>
+                        <li class="nav__link"><a class="nav__link--link" href="newOrder.html">Create a new order</a></li>
+                        <li class="nav__link"><a class="nav__link--link" href="userProfile.html">Parcels</a></li>
+					</ul>
+				</nav>
+	
+				<!-- menu bars. When clicked on, nav class properties is visible -->
+				<div class="hamburger" onclick="(function () {document.querySelector('.nav').style.display = 'block'; })()">
+					<div></div>
+					<div></div>
+					<div></div> 
+				</div>
+			</header>
+	
+            <div class="content">
+                <div class="hero">
+                    <div class="hero__container container">
+                        <div class="hero__info">
+                            <h1 class="hero__title">Customer</h1>
+                            <h2 class="hero__sub-title">Phone-number</h2>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+		   
+			<!-- cards -->
+			<div class="main">
+
+				<!--cards -->
+			   
+			   <div class="card">
+			   <div class="image">
+			   </div>
+			   <div class="title">
+				<h1 class="htext">
+			   Parcel 1</h1>
+				   
+
+				   
+			   <!-- sending from -->
+			   <h1>
+				Sending from:</h1>
+				<p>Abuja</p>
+				   
+
+				   
+					   <!-- destination -->
+				<h1>
+					Destination:</h1>
+					<p>Imo State</p>
+				   
+
+				   
+					   <!-- phone number -->
+					<h1>
+						Sendee Phone number:</h1>
+						<p>07069583654</p>
+				  
+
+				   
+					<!-- pickup address -->
+						<h1>
+							Pickup Address:</h1>
+							<p>No.88 Olugbode Kareem street Badagry</p>
+				   
+							   
+					   <!-- price and weight -->
+							<h1>
+								Price and weight:</h1>
+								<p>1kg -- #5000</p>
+
+								<!-- status -->
+								<h1>
+										Price status:</h1>
+										<p>Delivered</p>
+
+										<span class= "desti"><input type="text" placeholder="new destination">
+										<button onclick="(function () { document.querySelector('.desti').style.display = 'none'; }())" >Okay</button></span>
+			   </div>
+			   
+			   <div class="des">
+				
+			   <button onclick="(function () { document.querySelector('.desti').style.display = 'block'; }())">Change Destination</button>
+			   <button>Map</button>
+			   </div>
+			   </div>
+			   <!--cards -->
+			   
+			   
+			   <div class="card">
+					<div class="image">
+					</div>
+					<div class="title">
+					 <h1 class="htext">
+					Parcel 2</h1>
+						
+	 
+						
+					<!-- sending from -->
+					<h1>
+					 Sending from:</h1>
+					 <p>Abuja</p>
+						
+	 
+						
+							<!-- destination -->
+					 <h1>
+						 Destination:</h1>
+						 <p>Imo State</p>
+						
+	 
+						
+							<!-- phone number -->
+						 <h1>
+							 Sendee Phone number:</h1>
+							 <p>07069583654</p>
+					   
+	 
+						
+						 <!-- pickup address -->
+							 <h1>
+								 Pickup Address:</h1>
+								 <p>No.88 Olugbode Kareem street Badagry</p>
+						
+									
+							<!-- price and weight -->
+								 <h1>
+									 Price and weight:</h1>
+									 <p>1kg -- #5000</p>
+	 
+									 <!-- status -->
+									 <h1>
+											 Price status:</h1>
+											 <p>Delivered</p>
+
+											 <span class= "desti2"><input type="text" placeholder="new destination">
+												<button onclick="(function () { document.querySelector('.desti2').style.display = 'none'; }())" >Okay</button></span>
+					   </div>
+					   
+					   <div class="des">
+						
+					   <button onclick="(function () { document.querySelector('.desti2').style.display = 'block'; }())">Change Destination</button>
+					   <button>Map</button>
+					</div>
+					</div>
+			   <!--cards -->
+			   
+			   
+			   <div class="card">
+					<div class="image">
+					</div>
+					<div class="title">
+					 <h1 class="htext">
+					Parcel 3</h1>
+						
+	 
+						
+					<!-- sending from -->
+					<h1>
+					 Sending from:</h1>
+					 <p>Abuja</p>
+						
+	 
+						
+							<!-- destination -->
+					 <h1>
+						 Destination:</h1>
+						 <p>Imo State</p>
+						
+	 
+						
+							<!-- phone number -->
+						 <h1>
+							 Sendee Phone number:</h1>
+							 <p>07069583654</p>
+					   
+	 
+						
+						 <!-- pickup address -->
+							 <h1>
+								 Pickup Address:</h1>
+								 <p>No.88 Olugbode Kareem street Badagry</p>
+						
+									
+							<!-- price and weight -->
+								 <h1>
+									 Price and weight:</h1>
+									 <p>1kg -- #5000</p>
+	 
+									 <!-- status -->
+									 <h1>
+											 Price status:</h1>
+											 <p>Delivered</p>
+					<span class= "desti3"><input type="text" placeholder="new destination">
+										<button onclick="(function () { document.querySelector('.desti3').style.display = 'none'; }())" >Okay</button></span>
+			   </div>
+			   
+			   <div class="des">
+				
+			   <button onclick="(function () { document.querySelector('.desti3').style.display = 'block'; }())">Change Destination</button>
+			   <button>Map</button>
+					</div>
+					</div>
+			   <!--cards -->
+			   
+			   
+			   <div class="card">
+					<div class="image">
+					</div>
+					<div class="title">
+					 <h1 class="htext">
+					Parcel 4</h1>
+						
+	 
+						
+					<!-- sending from -->
+					<h1>
+					 Sending from:</h1>
+					 <p>Abuja</p>
+						
+	 
+						
+							<!-- destination -->
+					 <h1>
+						 Destination:</h1>
+						 <p>Imo State</p>
+						
+	 
+						
+							<!-- phone number -->
+						 <h1>
+							 Sendee Phone number:</h1>
+							 <p>07069583654</p>
+					   
+	 
+						
+						 <!-- pickup address -->
+							 <h1>
+								 Pickup Address:</h1>
+								 <p>No.88 Olugbode Kareem street Badagry</p>
+						
+									
+							<!-- price and weight -->
+								 <h1>
+									 Price and weight:</h1>
+									 <p>1kg -- #5000</p>
+	 
+									 <!-- status -->
+									 <h1>
+											 Price status:</h1>
+											 <p>Delivered</p>
+											 <span class= "desti4"><input type="text" placeholder="new destination">
+												<button onclick="(function () { document.querySelector('.desti4').style.display = 'none'; }())" >Okay</button></span>
+					   </div>
+					   
+					   <div class="des">
+						
+					   <button onclick="(function () { document.querySelector('.desti4').style.display = 'block'; }())">Change Destination</button>
+					   <button>Map</button>
+					</div>
+					</div>
+			   <!--cards -->
+			   
+			   
+			   <div class="card">
+					<div class="image">
+					</div>
+					<div class="title">
+					 <h1 class="htext">
+					Parcel 5</h1>
+						
+	 
+						
+					<!-- sending from -->
+					<h1>
+					 Sending from:</h1>
+					 <p>Abuja</p>
+						
+	 
+						
+							<!-- destination -->
+					 <h1>
+						 Destination:</h1>
+						 <p>Imo State</p>
+						
+	 
+						
+							<!-- phone number -->
+						 <h1>
+							 Sendee Phone number:</h1>
+							 <p>07069583654</p>
+					   
+	 
+						
+						 <!-- pickup address -->
+							 <h1>
+								 Pickup Address:</h1>
+								 <p>No.88 Olugbode Kareem street Badagry</p>
+						
+									
+							<!-- price and weight -->
+								 <h1>
+									 Price and weight:</h1>
+									 <p>1kg -- #5000</p>
+	 
+									 <!-- status -->
+									 <h1>
+											 Price status:</h1>
+											 <p>Delivered</p>
+											 <span class= "desti5"><input type="text" placeholder="new destination">
+												<button onclick="(function () { document.querySelector('.desti5').style.display = 'none'; }())" >Okay</button></span>
+					   </div>
+					   
+					   <div class="des">
+						
+					   <button onclick="(function () { document.querySelector('.desti5').style.display = 'block'; }())">Change Destination</button>
+					   <button>Map</button>
+					</div>
+					</div>
+			   
+			   </div>
+
+
+			</div>
+			<footer>
+				<p>Send-IT, copyright ©
+									<script>
+										document.write(new Date().getFullYear())
+									</script></p>
+			</footer>
+		</div>
+	
+		<script src="./scripts/myOrder.js"></script>
+	</body>
+</html>

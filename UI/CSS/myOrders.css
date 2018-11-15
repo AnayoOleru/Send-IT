@@ -313,24 +313,3 @@ header .logoColor{
    .desti, .desti2, .desti3, .desti4, .desti5{
      display: none;
    }
-
-    .sign-out-btn{
-    font-size: 20px;
-    font-weight: bold;
-	margin-top: 40px;
-	height: 55px;
-	padding-left: 35px; 
-	padding-right:35px;
-	border: 0;
-	color: white;
-	background-color:#c16f03; 
-}
-
- .sign-out-btn:hover{
-	color: #ffffff;
-	background-color:#1f5582; 
-}
-.heading{
-    text-align: center;
-    padding-top: 1px;
-}
