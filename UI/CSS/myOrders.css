@@ -19,10 +19,12 @@
     color: #1f5582;
   }
 
-  header .logoColor{
-    color: #c16f03;
-    font-weight: bold;
-  }
+  
+header .logoColor{
+	color: #c16f03;
+	font-weight: bold;
+}
+
 
   header.header {
     
@@ -246,9 +248,69 @@
     font-size: 1.7rem;
     margin-top: 0.8rem;
   }
-  
 
+  /* cards */
 
-  
-  
-  
+  .main{
+    width: 100%;
+    height: auto;
+    margin: 2%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-flow: wrap;
+
+   }
+   
+   .card{
+        width: 40%;
+        display: inline-block;
+        box-shadow: 2px 2px 20px black;
+        border-radius: 5px; 
+        margin: 2%;
+        box-sizing: border-box;
+       }
+   
+   .title{
+    
+     text-align: center;
+     padding: 10px;
+    
+     
+    }
+    .htext{
+      background: #c16f03;
+    }
+   
+   h1{
+     font-size: 20px;
+     /* background: #c16f03; */
+    }
+   
+   .des{
+     padding: 3px;
+     text-align: center;
+    
+     padding-top: 10px;
+           border-bottom-right-radius: 5px;
+     border-bottom-left-radius: 5px;
+   }
+   button{
+     margin-top: 40px;
+     margin-bottom: 10px;
+     background-color:#c16f03;
+     border: 1px solid black;
+     border-radius: 5px;
+     padding:10px;
+   }
+   button:hover{
+     background-color: #1f5582;
+     color: white;
+     transition: .5s;
+     cursor: pointer;
+   }
+
+   /* change destination */
+   .desti, .desti2, .desti3, .desti4, .desti5{
+     display: none;
+   }
