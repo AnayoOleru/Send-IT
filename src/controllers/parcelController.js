@@ -3,15 +3,15 @@ import parcels from '../db/parcel';
 
 class parcelController {
   // created logic to get all parcel delivery for parcelrouter
-  getParcels(req, res) { return res.json(parcels); },
+  static getParcels(req, res) { return res.json(parcels); },
   // logic to get specific parcel by id
-  getParcelById(req, res) {
+  static getParcelById(req, res) {
     const { parcelId } = req.params;
     return res.json(parcels[parcelId]);
   },
 
   // created logic to create delivery orders
-  createParcel(req, res) {
+  static createParcel(req, res) {
     const {
       userId,
       parcelWeight,
@@ -38,7 +38,7 @@ class parcelController {
     return res.status(201).json(parcelsDb);
   }
   // logic/continuation for PUT/parcels
-  cancelParcel(req, res) {
+  static cancelParcel(req, res) {
     const parcel = parcels;
     const { parcelId } = req.params;
 

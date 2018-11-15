@@ -4,13 +4,13 @@ import parcels from '../db/parcel';
 
 class userController {
   // logic to get all users
-  getUsers(req, res) {
+  static getUsers(req, res) {
     return res.json(users);
-  },
+  }
   // gets all parcels under specific user
-  userParcels(req, res) { return res.json(parcels); },
+  static userParcels(req, res) { return res.json(parcels); },
 
-  createUser(req, res) {
+  static createUser(req, res) {
     const { name = '', email, password } = req.body;
     // if email is not available
     if (!email || !password) {
