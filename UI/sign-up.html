@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Send-IT | Register</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" type="text/css" href="./CSS/sign-up.css">
+	<link href="https://fonts.googleapis.com/css?family=K2D|Patrick+Hand" rel="stylesheet">
+</head>
+<body>
+
+		<div class="wrapper">
+			<!-- navbar -->
+			<header class="header">
+				<div class="brand">
+					<a href="../index.html" class="brand__name"><span class="logoColor">Send</span>-IT</a>
+				</div>
+				<!-- nav links are hidden(mobile) until onclicked.But the nav-link are visible(desktop) -->
+				<nav class="nav">
+					<ul class="nav__links">
+						<li onclick="(function () { document.querySelector('.nav').style.display = 'none'; }())" class="close-nav">&times;</li>
+						<li class="nav__link"><a class="nav__link--link" href="../index.html">Home</a></li>
+						<li class="nav__link"><a class="nav__link--link" href="login.html">Sign-in</a></li>
+					</ul>
+				</nav>
+	
+				<!-- menu bars. When clicked on, nav class properties is visible -->
+				<div class="hamburger" onclick="(function () {document.querySelector('.nav').style.display = 'block'; })()">
+					<div></div>
+					<div></div>
+					<div></div> 
+				</div>
+			</header>
+	
+			<!-- title -->
+			<div class="content">
+				<div class="page-title">
+					<div class="container">
+						<h1>Register</h1>
+					</div>
+				</div>
+				
+				<main role="main" class="main">
+						<form action="#" class="login">
+							<div class="input-group">
+								<label for="name" class="input-group__label">Full Name</label>
+								<input required id="name" type="text" placeholder="e.g. Anayo Oleru" class="input-group__input">
+							</div>
+							<div class="input-group">
+								<label for="email" class="input-group__label">Email</label>
+								<input required id="email" type="email" placeholder="e.g. anayooleru@outlook.com" class="input-group__input">
+							</div>
+							<div class="input-group">
+									<label for="number" class="input-group__label">Phone Number</label>
+									<input required id="number" type="number" placeholder="080*****" class="input-group__input">
+								</div>
+							<div class="input-group">
+								<label for="password" class="input-group__label">Password</label>
+								<input required id="password" type="password" placeholder="********" class="input-group__input">
+							</div>
+							<div class="input-group">
+								<label for="confirm-password" class="input-group__label">Confirm password</label>
+								<input required id="confirm-password" type="password" placeholder="********" class="input-group__input">
+							</div>
+							<p class="result"></p>
+							<button type="submit" class="btn">Create account</button>
+							<p>Already have an account? <a href="login.html">Sign in</a></p>
+						</form>
+					</main>
+
+
+			</div>
+			<footer>
+				<p>Send-IT, copyright ©
+									<script>
+										document.write(new Date().getFullYear())
+									</script></p>
+			</footer>
+		</div>
+	
+		<script defer src="#"></script>
+	</body>
+</html>
