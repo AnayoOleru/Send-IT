@@ -8,7 +8,7 @@ class userController {
     return res.json(users);
   }
   // gets all parcels under specific user
-  static userParcels(req, res) { return res.json(parcels); },
+  static userParcels(req, res) { return res.json(parcels); }
 
   static createUser(req, res) {
     const { name = '', email, password } = req.body;
