@@ -216,7 +216,7 @@
   
     .nav__links {
       display: block;
-      background: #333;
+      background: #1f5582;
       position: relative;
     }
   
@@ -224,7 +224,7 @@
       padding: 1.8rem;
       border-top: 1px soild white;
       margin-top: 1px;
-      background: #222;
+      background: #1f5582;
       display: block;
     }
 

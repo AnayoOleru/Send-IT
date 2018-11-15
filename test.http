@@ -1,0 +1,26 @@
+# #this is to get all the parcel delivered
+ #GET http://localhost:3000/api/v1/parcels
+
+
+#and to cancel a delivery, with status: PUT/parcels
+ #PUT http://localhost:3000/api/v1/parcels/14590/cancel
+
+# Specific parcel ID
+  #GET http://localhost:3000/api/v1/parcels/14590
+
+# GET all parcel in the user id
+  #GET http://localhost:3000/api/v1/users/14590/parcels
+
+#this to create a parcel POST/parcel
+ #POST http://localhost:3000/api/v1/parcels
+Content-Type: application/json
+Authorization: token xxx
+
+    {
+        "userId": "35345",
+        "parcelWeight": "30kg",
+        "price": "20000",
+        "departure":"Imo",
+        "destination": "Anambra",
+        "pickupLocation": "ibonrin 45"
+    }

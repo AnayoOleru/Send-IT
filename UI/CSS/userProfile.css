@@ -24,8 +24,7 @@
     font-weight: bold;
   }
 
-  header.header {
-    
+  header.header { 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -246,8 +245,7 @@
     font-size: 1.7rem;
     margin-top: 0.8rem;
   }
-  
-
+ 
 
   
   

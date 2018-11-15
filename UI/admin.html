@@ -1,94 +1,203 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Send-IT | Admin</title>
+	<title>Send-IT | Register | Admin</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" type="text/css" href="./CSS/admin.css">
 	<link href="https://fonts.googleapis.com/css?family=K2D|Patrick+Hand" rel="stylesheet">
 </head>
 <body>
-<header>
-	<div class="container">
-		<div id="logo">
-			<h1><span class="logoColor">Send</span>-IT</h1>
+
+		<div class="wrapper">
+			<!-- navbar -->
+			<header class="header">
+				<div class="brand">
+					<a href="../index.html" class="brand__name"><span class="logoColor">Send</span>-IT</a>
 				</div>
-				<nav>
-					<ul>
-						<li class="home"><a href="../index.html">HOME</a></li>
-						<li><a href="#">ABOUT</a></li>
+				<!-- nav links are hidden(mobile) until onclicked.But the nav-link are visible(desktop) -->
+				<!-- <nav class="nav">
+					<ul class="nav__links">
+						<li onclick="(function () { document.querySelector('.nav').style.display = 'none'; }())" class="close-nav">&times;</li>
+						<li class="nav__link"><a class="nav__link--link" href="../index.html">Home</a></li>
+                        <li class="nav__link"><a class="nav__link--link" href="newOrder.html">Create a new order</a></li>
+                        <li class="nav__link"><a class="nav__link--link" href="userProfile.html">Parcels</a></li>
 					</ul>
-				</nav>
+				</nav> -->
+	
+				<!-- menu bars. When clicked on, nav class properties is visible -->
+				<!-- <div class="hamburger" onclick="(function () {document.querySelector('.nav').style.display = 'block'; })()">
+					<div></div>
+					<div></div>
+					<div></div> 
+				</div> -->
+			</header>
+	
+            <div class="content">
+                <div class="hero">
+                    <div class="hero__container container">
+                        <div class="hero__info">
+                            <h1 class="hero__title">Admin</h1>
+                            <a href="#"><button class="sign-out-btn">Sign-out</button></a>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+
+            <h1 class="heading">ALL PARCELS</h1>
+		   
+			<!-- cards -->
+			<div class="main">
+
+				<!--cards -->
+			   
+			   <div class="card">
+			   <div class="image">
+			   </div>
+			   <div class="title">
+				<h1 class="htext">
+			   Parcel 338A</h1>
+				   <!-- customer name -->
+               <h1>
+               Customer Name:</h1>
+               <p>Josiah Obi</p>
+                <!-- customer phone number -->
+               <h1>
+                Customer Phone-Number:</h1>
+                <p>07069583654</p>
+				   
+			   <!-- sending from -->
+			   <h1>
+				Sending from:</h1>
+				<p>Abuja</p>
+				   
+
+				   
+					   <!-- destination -->
+				<h1>
+					Destination:</h1>
+					<p>Imo State</p>
+				   
+
+				   
+					   <!-- phone number -->
+					<h1>
+						Sendee Phone number:</h1>
+						<p>07069583654</p>
+				  
+
+				   
+					<!-- pickup address -->
+						<h1>
+							Pickup Address:</h1>
+							<p>No.88 Olugbode Kareem street Badagry</p>
+				   
+							   
+					   <!-- price and weight -->
+							<h1>
+								Price and weight of parcel:</h1>
+								<p>1kg -- #5000</p>
+			   </div>
+			   
+			   <div class="des">
+				
+                <div class="input-group">
+                    <label for="from" class="input-group__label">Current Parcel Status:</label>
+                    <!-- dropdown form gotten from W3schools.com -->
+                    <select required name="Choose the current status of the parcel" id="from" class="input-group__input">
+                            <option value="Delivered">Delivered</option>
+                            <option value="Waiting">Waiting</option>
+                            <option value="Cancelled">Cancelled</option>  
+                          </select>
+
+                </div>
+                <input type="checkbox">Successfully delivered?
+                <br>
+			   <button>Edit Map </button>
+			   </div>
+			   </div>
+			   <!--cards -->
+			   
+			   
+			   <div class="card">
+                <div class="image">
+                </div>
+                <div class="title">
+                 <h1 class="htext">
+                Parcel 344Z</h1>
+                    <!-- customer name -->
+                <h1>
+                Customer Name:</h1>
+                <p>Shukura Kafayat</p>
+                 <!-- customer phone number -->
+                <h1>
+                 Customer Phone-Number:</h1>
+                 <p>08099678954</p>
+                    
+                <!-- sending from -->
+                <h1>
+                 Sending from:</h1>
+                 <p>Lagos</p>
+                    
+ 
+                    
+                        <!-- destination -->
+                 <h1>
+                     Destination:</h1>
+                     <p>Abuja</p>
+                    
+ 
+                    
+                        <!-- phone number -->
+                     <h1>
+                         Sendee Phone number:</h1>
+                         <p>09067856754</p>
+                   
+ 
+                    
+                     <!-- pickup address -->
+                         <h1>
+                             Pickup Address:</h1>
+                             <p>5th Avenue Buhari close</p>
+                    
+                                
+                        <!-- price and weight -->
+                             <h1>
+                                 Price and weight of parcel:</h1>
+                                 <p>5kg -- #25000</p>
+                </div>
+                
+                <div class="des">
+                 
+                 <div class="input-group">
+                     <label for="from" class="input-group__label">Current Parcel Status:</label>
+                     <!-- dropdown form gotten from W3schools.com -->
+                     <select required name="Choose the current status of the parcel" id="from" class="input-group__input">
+                             <option value="Delivered">Delivered</option>
+                             <option value="Waiting">Waiting</option>
+                             <option value="Cancelled">Cancelled</option>  
+                           </select>
+ 
+                 </div>
+                 <input type="checkbox">Successfully delivered?
+                <br>
+                <button>Edit Map </button>
+                </div>
+                </div>
+			  
+			   
+			   </div>
+
+
 			</div>
-</header>
-
-<section>
-	<div class="sidebar">
-
-	<ul>
-		<li><img src="./img/user-icon.png" alt="User-Image">
-			<h5>ADMIN</h5>
-	</li>
-		<li><a href="#page1">ORDERS</a></li>
-		<li><a href=""><button>Sign-out</button></a></li>
-	</ul>
-</div>
-	<section>
-		<div class="sidebar2">
-                <div class="orders">
-                    <h3>
-                        Owner: John Kunle
-
-                    </h3>
-                    <h3>
-                        ID: 234g
-                    </h3>
-                    <h3>
-                        Info: 
-                    </h3>
-                    <h3>
-                        Pickup: John Market
-                    </h3>
-                    <span>
-                        Status: <input type="checkbox">
-                    </span>
-                    <button>
-                      Menu
-                    </button>
-                </div>
-               
-                <div class="orders">
-                    <h3>
-                        Owner: Peter Jacob
-
-                    </h3>
-                    <h3>
-                        ID: 24g
-                    </h3>
-                    <h3>
-                        Info: 
-                    </h3>
-                    <h3>
-                        Pickup: Alaba market
-                    </h3>
-                    <span>
-                        Status: <input type="checkbox">
-                    </span>
-                    <button>
-                      Menu
-                    </button>
-                </div>
-
-
-  </div><!-- /page1 -->
-
-  	
-
-
-</div>
-	</section>
-</section>
-	<script src="./scripts/admin.js" type="text/javascript"></script>
-
-</body>
+			<footer>
+				<p>Send-IT copyright ©
+									<script>
+										document.write(new Date().getFullYear())
+									</script></p>
+			</footer>
+		</div>
+	
+		<script src="./scripts/admin.js"></script>
+	</body>
 </html>

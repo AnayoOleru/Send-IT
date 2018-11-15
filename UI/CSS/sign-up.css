@@ -16,7 +16,7 @@
     font-weight: 400;
     line-height: 1.6em;
     font-size: 1.4rem;
-    color: #707070;
+    /* color: #707070; */
   }
 
   header .logoColor{
@@ -33,10 +33,10 @@
     padding: 1rem 1.8rem;
     position: relative;
     background:#1f5582;
-	color:#ffffff;
-	padding-top: 30px;
-	min-height: 70px;
-	border-bottom: #c16f03 3px solid;
+	  color:#ffffff;
+	  padding-top: 30px;
+	  min-height: 70px;
+	  border-bottom: #c16f03 3px solid;
   }
 
   /* send-IT title positioning */
@@ -217,7 +217,7 @@
   
     .nav__links {
       display: block;
-      background: #333;
+      background: #1f5582;
       position: relative;
     }
   
@@ -225,7 +225,7 @@
       padding: 1.8rem;
       border-top: 1px soild white;
       margin-top: 1px;
-      background: #222;
+      background: #1f5582;
       display: block;
     }
   }
@@ -244,6 +244,10 @@
     font-weight: bold;
     font-size: 1.3rem;
     margin-top: 0.8rem;
+  }
+  .container{
+    text-align: center;
+    margin-top: 20px;
   }
 
   footer{
