@@ -46,13 +46,4 @@ class parcelController {
 
     res.json(parcels[parcelId]);
   }
-
-  // deleteParcel = (req, res) {
-  //   const parcels = {parcels};
-
-  //   delete parcels[parcel.id];
-  //   parcels = parcels;
-
-  //   res.json(req.parcel);
-  // };
 };
