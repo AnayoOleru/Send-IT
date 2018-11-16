@@ -1,6 +1,6 @@
 import { Router } from 'express';
-// import parcels from '../controllers/parcelController';
-const parcels = require('../controllers/parcelController');
+import parcels from '../controllers/parcelController';
+
 
 const router = Router();
 const {
