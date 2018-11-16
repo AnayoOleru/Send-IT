@@ -1,28 +1,24 @@
 import { Router } from 'express';
-import parcels from '../controllers/parcelController';
+import ParcelController from '../controllers/parcelController';
 
 
 const router = Router();
 const {
   getParcels, createParcel, getParcelById, cancelParcel
-} = parcels;
-// import the logic from parcelcontroller and ...
-// fetch all parcel delivery orders
-// create delivery new delivery
+} = ParcelController;
+
 router
-  .route('')
+  .route('/parcels')
   .get(getParcels)
   .post(createParcel);
 
-// cancel the specific parcel delivery order
 router
-  .route('/:parcelId/cancel')
+  .route('/:parcelId')
   .put(cancelParcel);
 
-//
+
 router
   .route('/:parcelId')
   .get(getParcelById);
 
-// export default router;
 export default router;

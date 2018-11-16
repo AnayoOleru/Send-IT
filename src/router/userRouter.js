@@ -1,8 +1,8 @@
-import { express } from 'express';
-import users from '../controllers/userController';
+import { Router } from 'express';
+import User from '../controllers/userController';
 
-const router = express.Router();
-const { getUsers, createUser, userParcels } = users;
+const router = Router();
+const { getUsers, createUser, userParcels } = User;
 
 router
   .route('/users')
@@ -10,7 +10,7 @@ router
   .post(createUser);
 
 router
-  .route('/:userId/parcels')
+  .route('parcels/:userId/parcels')
   .get(userParcels);
-// export default router;
+
 export default router;
