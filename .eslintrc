@@ -17,7 +17,7 @@
     "comma-dangle": 0,
     "curly": ["error", "multi-line"],
     "no-shadow": ["error", { "allow": ["req", "done", "res", "err"] }],
-    "valid-jsdoc": ["error", {
+    "valid-jsdoc": [1, {
       "requireReturn": true,
       "requireReturnType": true,
       "requireParamDescription": false,
