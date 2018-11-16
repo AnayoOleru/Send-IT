@@ -1,6 +1,5 @@
 import { randomBytes } from 'crypto';
 import users from '../db/users';
-import parcels from '../db/parcel';
 
 /**
  * @exports
