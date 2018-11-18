@@ -9,8 +9,8 @@ router
   .get(getUsers)
   .post(createUser);
 
-router
-  .route('parcels/:userId/parcels')
-  .get(userParcels);
+// router
+//   .route('parcels/:userId/parcels')
+//   .get(userParcels);
 
 export default router;
