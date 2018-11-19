@@ -1,27 +1,26 @@
 import { Router } from 'express';
-import parcels from '../controllers/parcelController';
+import ParcelController from '../controllers/parcelController';
+
 
 const router = Router();
 const {
   getParcels, createParcel, getParcelById, cancelParcel
-} = parcels;
-// import the logic from parcelcontroller and ...
-// fetch all parcel delivery orders
-// create delivery new delivery
+} = ParcelController;
+
+// localhost3000/api/v1/parcels
 router
-  .route('')
+  .route('/')
   .get(getParcels)
   .post(createParcel);
 
-// cancel the specific parcel delivery order
+// localhost 3000/api/v1/parcels/12345/cancel
 router
   .route('/:parcelId/cancel')
   .put(cancelParcel);
 
-//
+// localhost 3000/api/v1/parcels/12345
 router
   .route('/:parcelId')
   .get(getParcelById);
 
-// export default router;
 export default router;

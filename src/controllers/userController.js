@@ -1,38 +1,65 @@
 import { randomBytes } from 'crypto';
-import users from '../db/users';
-import parcels from '../db/parcel';
+import userDb from '../db/users';
+import parcelOrderDb from '../db/parcel';
 
-export default {
-  // logic to get all users
-  getUsers(req, res) {
-    return res.json(users);
-  },
-  // gets all parcels under specific user
-  userParcels(req, res) { return res.json(parcels); },
-
-  createUser(req, res) {
-    const { name = '', email, password } = req.body;
-    // if email is not available
-    if (!email || !password) {
-      return res
-        .status(401)
-        .json({ error: { message: 'Email and password are required to signup.' } });
-    }
-    // checks if email is available
-    // const emailAvaiable = Object.entries(users).every(([val]) => val.email !== email);
-
-    // if (!emailAvaiable) return res.status(409)
-    // .json({ error: { message: 'Email is already registered.' } });
-
-    const randomId = randomBytes(4).toString('hex');
-    const newUser = {
-      id: randomId,
-      name,
-      password,
-      email,
-    };
-
-    users[randomId] = newUser;
-    res.status(201).json(newUser);
+/**
+ * @exports
+ * @class userController
+*/
+class UserController {
+  /**
+   * @staticmethod
+   * @param {object} req - Request Object
+   * @param {object} res - Response Object
+   * @returns {object} - Returns all parcels object
+   */
+  static getUsers(req, res) {
+    return res.status(200).json(userDb);
   }
-};
+
+  /**
+   *
+   * @staticmethod
+   * @param {values} req - Request values into keys
+   * @param {object} res - Push newUser into array
+   * @returns {array} - returns all key value pairs as object in array
+   */
+  static createUser(req, res) {
+    const {
+      name,
+      email,
+      password
+    } = req.body;
+    const newUserId = randomBytes(5).toString('hex');
+
+    userDb.push({
+      id: newUserId,
+      name,
+      email,
+      password
+    });
+
+    return res.status(201).json({ userDb });
+  }
+
+
+  /**
+   *
+   * @staticmethod
+   * @param {object} req - Request object
+   * @param {object} res - respond object
+   * @returns {object} - returns all parcel object for a specific user
+   */
+  static userParcels(req, res) {
+    const { userId } = req.params;
+    let userParcels;
+    parcelOrderDb.forEach((parcels) => {
+      if (parcels.id === userId) {
+        userParcels = parcels;
+        return res.status(200).json(userParcels);
+      }
+    });
+  }
+}
+
+export default UserController;
