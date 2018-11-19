@@ -11,8 +11,8 @@ app.use(urlencoded({
 
 app.use('/api/v1/users', users);
 app.use('/api/v1/parcels', parcels);
-app.get('*', (req, res) => {
-  res.send('Hello-world');
+app.get('/api/v1', (req, res) => {
+  res.send('I am Send-IT! welcome');
 });
 
 app.set('port', (process.env.PORT || 3000));

@@ -1,5 +1,5 @@
 import { randomBytes } from 'crypto';
-import parcels from '../db/parcel';
+import parcelOrderDb from '../db/parcel';
 /**
  * @exports
  * @class parcelController
@@ -9,9 +9,11 @@ class ParcelController {
    * @staticmethod
    * @param {object} req - Request Object
    * @param {object} res - Response Object
-   * @returns {object} - Returns all parcels object
+   * @returns {array} - Returns all parcels: Array of objects
    */
-  static getParcels(req, res) { return res.json(parcels); }
+  static getParcels(req, res) {
+    return res.status(200).json(parcelOrderDb);
+  }
 
   /**
  *
@@ -22,24 +24,22 @@ class ParcelController {
  */
   static getParcelById(req, res) {
     const { parcelId } = req.params;
-    return res.json(parcels[parcelId]);
-  }
+    let parcelObject;
+    parcelOrderDb.forEach((parcel) => {
+      if (parcel.id === parcelId) {
+        parcelObject = parcel;
+      }
+    });
 
-  /**
-   *
-   * @staticmethod
-   * @param {object} req - Request object
-   * @param {object} res - respond object
-   * @returns {object} - returns all parcel object for a specific user
-   */
-  static userParcels(req, res) { return res.json(parcels); }
+    return res.status(200).json(parcelObject);
+  }
 
   /**
    *
    * @staticmethod
    * @param {values} req - Request values into keys
    * @param {object} res - Respond object
-   * @returns {object} - returns all key value pairs as object
+   * @returns {array} - returns all key value pairs as object in array
    */
   static createParcel(req, res) {
     const {
@@ -50,10 +50,9 @@ class ParcelController {
       destination,
       pickupLocation
     } = req.body;
-    const parcelsDb = parcels;
     const parcelId = randomBytes(5).toString('hex');
 
-    parcelsDb[parcelId] = {
+    parcelOrderDb.push({
       id: parcelId,
       userId,
       parcelWeight,
@@ -62,24 +61,30 @@ class ParcelController {
       destination,
       pickupLocation,
       status: 'proccessing'
-    };
+    });
 
-    return res.status(201).json(parcelsDb);
+    return res.status(201).json(parcelOrderDb);
   }
 
   /**
    *@staticmethod
    * @param {object} req - Request parcel id
    * @param {object} res - Respond object
-   * @returns{object} - Returns array
+   * @returns{string} - Returns status string
    */
   static cancelParcel(req, res) {
-    const parcel = parcels;
     const { parcelId } = req.params;
 
-    parcel[parcelId].status = 'cancelled';
 
-    res.json(parcels[parcelId]);
+    let parcelStatus;
+    parcelOrderDb.forEach((parcel) => {
+      if (parcel.id === parcelId) {
+        parcel.status = 'cancelled';
+        parcelStatus = parcel;
+      }
+    });
+
+    return res.status(200).json(parcelStatus);
   }
 }
 
