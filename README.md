@@ -50,12 +50,12 @@ API BASE URL
 https://senditservice.herokuapp.com/api/v1/ 
 ```  
 
-## Endpoints ``` /api/v1/parcels```
+## Endpoints ``` /api/v1/```
 | method |	route	                | description                    |
 |--------|--------------------------|--------------------------------|
 | GET 	 | /parcels	                | Get all parcel delivery orders |
 | GET	 | /parcels/:parcelId       | Get a specific order           |
-| GET	 | /parcels/:userID/parcels	| Get all user orders            |
-| PUT    | /parcels/:parcelId/      | Cancel a delivery order        |
+| GET	 | /users/:userID/parcels	| Get all user orders            |
+| PUT    | /parcels/:parcelId/cancel      | Cancel a delivery order        |
 | POST   | /parcels                 | Create a new delivery order    |
 
