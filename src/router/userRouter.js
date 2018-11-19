@@ -1,5 +1,5 @@
-const express = require('express');
-const users = require('../controllers/userController');
+import { express } from 'express';
+import users from '../controllers/userController';
 
 const router = express.Router();
 const { getUsers, createUser, userParcels } = users;
@@ -13,4 +13,4 @@ router
   .route('/:userId/parcels')
   .get(userParcels);
 // export default router;
-module.exports = router;
+export default router;
