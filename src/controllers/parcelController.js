@@ -1,17 +1,47 @@
 import { randomBytes } from 'crypto';
 import parcels from '../db/parcel';
+/**
+ * @exports
+ * @class parcelController
+*/
+class ParcelController {
+  /**
+   * @staticmethod
+   * @param {object} req - Request Object
+   * @param {object} res - Response Object
+   * @returns {object} - Returns all parcels object
+   */
+  static getParcels(req, res) { return res.json(parcels); }
 
-export default {
-  // created logic to get all parcel delivery for parcelrouter
-  getParcels(req, res) { return res.json(parcels); },
-  // logic to get specific parcel by id
-  getParcelById(req, res) {
+  /**
+ *
+ * @staticmethod
+ * @param {object} req - Request object
+ * @param {object} res - Response object
+ * @returns {object} - Returns a specific parcel object
+ */
+  static getParcelById(req, res) {
     const { parcelId } = req.params;
     return res.json(parcels[parcelId]);
-  },
+  }
 
-  // created logic to create delivery orders
-  createParcel(req, res) {
+  /**
+   *
+   * @staticmethod
+   * @param {object} req - Request object
+   * @param {object} res - respond object
+   * @returns {object} - returns all parcel object for a specific user
+   */
+  static userParcels(req, res) { return res.json(parcels); }
+
+  /**
+   *
+   * @staticmethod
+   * @param {values} req - Request values into keys
+   * @param {object} res - Respond object
+   * @returns {object} - returns all key value pairs as object
+   */
+  static createParcel(req, res) {
     const {
       userId,
       parcelWeight,
@@ -23,7 +53,6 @@ export default {
     const parcelsDb = parcels;
     const parcelId = randomBytes(5).toString('hex');
 
-    // json start status for the PUT/parcels status
     parcelsDb[parcelId] = {
       id: parcelId,
       userId,
@@ -36,9 +65,15 @@ export default {
     };
 
     return res.status(201).json(parcelsDb);
-  },
-  // logic/continuation for PUT/parcels
-  cancelParcel(req, res) {
+  }
+
+  /**
+   *@staticmethod
+   * @param {object} req - Request parcel id
+   * @param {object} res - Respond object
+   * @returns{object} - Returns array
+   */
+  static cancelParcel(req, res) {
     const parcel = parcels;
     const { parcelId } = req.params;
 
@@ -46,4 +81,7 @@ export default {
 
     res.json(parcels[parcelId]);
   }
-};
+}
+
+export default ParcelController;
+

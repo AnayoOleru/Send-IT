@@ -18,8 +18,9 @@
     "curly": ["error", "multi-line"],
     "no-shadow": ["error", { "allow": ["req", "done", "res", "err"] }],
     "valid-jsdoc": [1, {
-      "requireReturn": false,
-      "requireReturnType": false,
+
+      "requireReturn": true,
+      "requireReturnType": true,
       "requireParamDescription": false,
       "requireReturnDescription": false
     }],

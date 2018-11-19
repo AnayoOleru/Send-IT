@@ -1,18 +1,29 @@
 import { randomBytes } from 'crypto';
 import users from '../db/users';
-import parcels from '../db/parcel';
 
-export default {
-  // logic to get all users
-  getUsers(req, res) {
+/**
+ * @exports
+ * @class userController
+*/
+class UserController {
+  /**
+   * @staticmethod
+   * @param {object} req - Request Object
+   * @param {object} res - Response Object
+   * @returns {object} - Returns all parcels object
+   */
+  static getUsers(req, res) {
     return res.json(users);
-  },
-  // gets all parcels under specific user
-  userParcels(req, res) { return res.json(parcels); },
+  }
 
-  createUser(req, res) {
+  /**
+   * @staticmethod
+   * @param {object} req - Request Object
+   * @param {object} res - Response Object
+   * @returns {object} - Returns status code
+   */
+  static createUser(req, res) {
     const { name = '', email, password } = req.body;
-    // if email is not available
     if (!email || !password) {
       return res
         .status(401)
@@ -30,4 +41,6 @@ export default {
     users[randomId] = newUser;
     res.status(201).json(newUser);
   }
-};
+}
+
+export default UserController;
