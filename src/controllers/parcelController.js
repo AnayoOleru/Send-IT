@@ -35,14 +35,14 @@ class ParcelController {
     return res.status(200).json(parcelObject);
   }
 
-
+  
   /**
    *
    * @staticmethod
    * @param {values} req - Request values into keys
    * @param {object} res - Respond object
    * @returns {array} - returns all key value pairs as object in array
-
+   *
    */
   static createParcel(req, res) {
     const {
@@ -78,6 +78,7 @@ class ParcelController {
   static cancelParcel(req, res) {
     const { parcelId } = req.params;
 
+
     let parcelStatus;
     parcelOrderDb.forEach((parcel) => {
       if (parcel.id === parcelId) {
@@ -91,4 +92,3 @@ class ParcelController {
 }
 
 export default ParcelController;
-

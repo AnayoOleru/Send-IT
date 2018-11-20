@@ -7,7 +7,6 @@ const {
   getParcels, createParcel, getParcelById, cancelParcel
 } = ParcelController;
 
-
 // localhost3000/api/v1/parcels
 router
   .route('/')
@@ -16,7 +15,7 @@ router
 
 // localhost 3000/api/v1/parcels/12345/cancel
 router
-  .route('/:parcelId')
+  .route('/:parcelId/cancel')
   .put(cancelParcel);
 
 // localhost 3000/api/v1/parcels/12345
