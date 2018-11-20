@@ -14,6 +14,7 @@ class UserController {
    * @returns {object} - Returns all parcels object
    */
   static getUsers(req, res) {
+
     return res.status(200).json(userDb);
   }
 
@@ -31,6 +32,7 @@ class UserController {
       password
     } = req.body;
     const newUserId = randomBytes(5).toString('hex');
+
 
     userDb.push({
       id: newUserId,
@@ -63,3 +65,4 @@ class UserController {
 }
 
 export default UserController;
+
