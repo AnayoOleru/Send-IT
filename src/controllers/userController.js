@@ -50,17 +50,11 @@ class UserController {
    * @param {object} res - respond object
    * @returns {object} - returns all parcel object for a specific user
    */
-  static userParcels(req, res) {
+  static getUserParcels(req, res) {
     const { userId } = req.params;
-    let userParcels;
-    parcelOrderDb.forEach((parcels) => {
-      if (parcels.id === userId) {
-        userParcels = parcels;
-        return res.status(200).json(userParcels);
-      }
-    });
+    const userParcels = parcelOrderDb.filter(parcel => parcel.userId === userId);
+    return res.status(200).json({ userParcels });
   }
 }
 
 export default UserController;
-

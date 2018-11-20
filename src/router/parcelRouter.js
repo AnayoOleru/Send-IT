@@ -4,13 +4,13 @@ import ParcelController from '../controllers/parcelController';
 
 const router = Router();
 const {
-  getParcels, createParcel, getParcelById, cancelParcel
+  getAllParcels, createParcel, getParcelById, cancelParcel
 } = ParcelController;
 
 // localhost3000/api/v1/parcels
 router
   .route('/')
-  .get(getParcels)
+  .get(getAllParcels)
   .post(createParcel);
 
 // localhost 3000/api/v1/parcels/12345/cancel

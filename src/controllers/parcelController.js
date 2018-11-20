@@ -1,9 +1,5 @@
 import { randomBytes } from 'crypto';
 import parcelOrderDb from '../db/parcel';
-<<<<<<< HEAD
-
-=======
->>>>>>> 0a5cbb32eb54fb51e7abf1589561627b943c2ed8
 /**
  * @exports
  * @class parcelController
@@ -15,7 +11,7 @@ class ParcelController {
    * @param {object} res - Response Object
    * @returns {array} - Returns all parcels: Array of objects
    */
-  static getParcels(req, res) {
+  static getAllParcels(req, res) {
     return res.status(200).json(parcelOrderDb);
   }
 
@@ -30,7 +26,7 @@ class ParcelController {
     const { parcelId } = req.params;
     let parcelObject;
     parcelOrderDb.forEach((parcel) => {
-      if (parcel.id === parcelId) {
+      if (parcel.parcelId === parcelId) {
         parcelObject = parcel;
       }
     });
@@ -38,37 +34,47 @@ class ParcelController {
     return res.status(200).json(parcelObject);
   }
 
-  
+
   /**
    *
    * @staticmethod
    * @param {values} req - Request values into keys
    * @param {object} res - Respond object
    * @returns {array} - returns all key value pairs as object in array
-   * 
+   *
    */
   static createParcel(req, res) {
     const {
       userId,
-      parcelWeight,
-      price,
-      departure,
+      nameOfItem,
       destination,
-      pickupLocation
+      sendeeName,
+      sendeePhoneNumber,
+      CityOrTown,
+      LGA,
+      pickupLocation,
+      parcelWeight,
+      SecurityQuestion,
+      answer,
     } = req.body;
+
     const parcelId = randomBytes(5).toString('hex');
 
     parcelOrderDb.push({
-      id: parcelId,
+      parcelId,
       userId,
-      parcelWeight,
-      price,
-      departure,
+      nameOfItem,
       destination,
+      sendeeName,
+      sendeePhoneNumber,
+      CityOrTown,
+      LGA,
       pickupLocation,
+      parcelWeight,
+      SecurityQuestion,
+      answer,
       status: 'proccessing'
     });
-
     return res.status(201).json(parcelOrderDb);
   }
 
@@ -84,7 +90,7 @@ class ParcelController {
 
     let parcelStatus;
     parcelOrderDb.forEach((parcel) => {
-      if (parcel.id === parcelId) {
+      if (parcel.parcelId === parcelId) {
         parcel.status = 'cancelled';
         parcelStatus = parcel;
       }
