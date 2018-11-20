@@ -2,7 +2,6 @@ import { randomBytes } from 'crypto';
 import userDb from '../db/users';
 import parcelOrderDb from '../db/parcel';
 
-
 /**
  * @exports
  * @class userController
@@ -27,6 +26,7 @@ class UserController {
    */
   static createUser(req, res) {
     const {
+
       name,
       email,
       password
@@ -39,7 +39,6 @@ class UserController {
       email,
       password
     });
-
     return res.status(201).json({ userDb });
   }
 

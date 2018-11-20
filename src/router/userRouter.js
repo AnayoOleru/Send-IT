@@ -9,6 +9,7 @@ router
   .route('/')
   .get(getUsers)
   .post(createUser);
+
 router
   .route('/:userId/parcels')
   .get(userParcels);

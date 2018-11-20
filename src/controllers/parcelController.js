@@ -1,6 +1,9 @@
 import { randomBytes } from 'crypto';
 import parcelOrderDb from '../db/parcel';
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0a5cbb32eb54fb51e7abf1589561627b943c2ed8
 /**
  * @exports
  * @class parcelController
@@ -42,7 +45,7 @@ class ParcelController {
    * @param {values} req - Request values into keys
    * @param {object} res - Respond object
    * @returns {array} - returns all key value pairs as object in array
-   *
+   * 
    */
   static createParcel(req, res) {
     const {
