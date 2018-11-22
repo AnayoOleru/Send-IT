@@ -20,7 +20,7 @@ pool.on('connect', () => {
 const createParcelTable = () => {
   const queryText = `CREATE TABLE IF NOT EXISTS
       parcel_table(
-        user_id SERIAL PRIMARY KEY,
+        user_id UUID NOT NULL,
         parcel_id SERIAL PRIMARY KEY,
         name_of_item VARCHAR(128) NOT NULL,
         destination VARCHAR(128) NOT NULL,
@@ -33,6 +33,7 @@ const createParcelTable = () => {
         parcel_weight  REAL NOT NULL,
         answer VARCHAR(300) NOT NULL,
         status VARCHAR(40) NOT NULL,
+        FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
       )`;
 // pool query method with argument returns promised
   pool.query(queryText)
@@ -45,6 +46,33 @@ const createParcelTable = () => {
       pool.end();
     });
 };
+
+/**
+ * Create User Table
+ */
+const createUserTable = () => {
+  const queryText =
+    `CREATE TABLE IF NOT EXISTS
+      users(
+        id UUID PRIMARY KEY,
+        fullname VARCHAR(128) NOT NULL,
+        email VARCHAR(128) UNIQUE NOT NULL,
+        phone_number REAL NOT NULL
+        password VARCHAR(128) NOT NULL,
+        created_date TIMESTAMP,
+        modified_date TIMESTAMP
+      )`;
+
+  pool.query(queryText)
+    .then((res) => {
+      console.log(res);
+      pool.end();
+    })
+    .catch((err) => {
+      console.log(err);
+      pool.end();
+    });
+}
 
 
 /**
@@ -64,11 +92,28 @@ const dropParcelTable = () => {
 };
 
 /**
+ * delete User Table
+ */
+const dropUserTable = () => {
+  const queryText = 'DROP TABLE IF EXISTS users returning *';
+  pool.query(queryText)
+    .then((res) => {
+      console.log(res);
+      pool.end();
+    })
+    .catch((err) => {
+      console.log(err);
+      pool.end();
+    });
+}
+
+/**
  * Creating All Tables
  * @returns 
  */
 const createAllTables = () => {
   createParcelTable();
+  createUserTable();
 };
 /**
  * delete all Tables
@@ -76,6 +121,7 @@ const createAllTables = () => {
  */
 const dropAllTables = () => {
   dropParcelTable();
+  dropUserTable();
 };
 
 pool.on('remove', () => {
@@ -89,6 +135,8 @@ module.exports = {
   createAllTables,
   dropParcelTable,
   dropAllTables,
+  createUserTable,
+  dropUserTable
 };
 
 require('make-runnable');
