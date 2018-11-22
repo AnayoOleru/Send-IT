@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const string = process.env.NODE_ENV === 'test'
+const string = process.env.NODE_ENV
   ? ''
   : process.env.DATABASE_URL;
 

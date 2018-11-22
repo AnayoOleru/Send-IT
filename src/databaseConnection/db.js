@@ -1,5 +1,4 @@
-
-// connect to postgres
+// creating tables in ElephantSQL
 const { Pool } = require('pg');
 const dotenv = require('dotenv');
 
@@ -10,33 +9,32 @@ const pool = new Pool({
 });
 
 pool.on('connect', () => {
-  console.log('connected to the db');
+  console.log('connected to the database');
 });
 
 // export default (text, params) => pool.query(text, params);
 
 /**
- * Create Tables
+ * Creating Tables
  */
 const createParcelTable = () => {
   const queryText = `CREATE TABLE IF NOT EXISTS
-      parcel_db(
-        parcel_id UUID PRIMARY KEY,
-        user_id UUID NOT NULL,
-        name_of_item VARCHAR(300) NOT NULL,
-        destination VARCHAR(300) NOT NULL,
-        sendee_name VARCHAR(300) NOT NULL,
-        sendee_phone_number VARCHAR(300) NOT NULL,
-        city_or_town TIMESTAMP,
-        LGA VARCHAR(300) NOT NULL,
-        pickup_location VARCHAR(300) NOT NULL,
-        security_question VARCHAR(300) NOT NULL,
-        parcel_weight REAL NOT NULL,
+      parcel_table(
+        user_id SERIAL PRIMARY KEY,
+        parcel_id SERIAL PRIMARY KEY,
+        name_of_item VARCHAR(128) NOT NULL,
+        destination VARCHAR(128) NOT NULL,
+        sendee_name VARCHAR(128) NOT NULL,
+        sendee_phone_number REAL NOT NULL,
+        city_or_town VARCHAR(128) NOT NULL,
+        lga VARCHAR(128) NOT NULL,
+        pickup_location VARCHAR(128) NOT NULL,
+        security_question VARCHAR(128) NOT NULL,
+        parcel_weight  REAL NOT NULL,
         answer VARCHAR(300) NOT NULL,
         status VARCHAR(40) NOT NULL,
-        FOREIGN KEY (sender_id) REFERENCES users (id) ON DELETE CASCADE
       )`;
-
+// pool query method with argument returns promised
   pool.query(queryText)
     .then((res) => {
       console.log(res);
@@ -49,10 +47,10 @@ const createParcelTable = () => {
 };
 
 /**
- * Drop Tables
+ * deleting Tables
  */
 const dropParcelTable = () => {
-  const queryText = 'DROP TABLE IF EXISTS parcelorders returning *';
+  const queryText = 'DROP TABLE IF EXISTS parcel_table returning *';
   pool.query(queryText)
     .then((res) => {
       console.log(res);
@@ -65,58 +63,17 @@ const dropParcelTable = () => {
 };
 
 /**
- * Create User Table
- */
-const createUserTable = () => {
-  const queryText = `CREATE TABLE IF NOT EXISTS
-      user_db(
-        id UUID PRIMARY KEY NOT NULL,
-        username VARCHAR(255) NOT NULL,
-        email VARCHAR(128) UNIQUE NOT NULL,
-        password VARCHAR(128) NOT NULL,
-        isAdmin BOOLEAN DEFAULT false,
-        created_date DATE DEFAULT CURRENT_DATE     
-      )`;
-
-  pool.query(queryText)
-    .then((res) => {
-      console.log(res);
-      pool.end();
-    })
-    .catch((err) => {
-      console.log(err);
-      pool.end();
-    });
-};
-
-/**
- * Drop User Table
- */
-const dropUserTable = () => {
-  const queryText = 'DROP TABLE IF EXISTS users returning *';
-  pool.query(queryText)
-    .then((res) => {
-      console.log(res);
-      pool.end();
-    })
-    .catch((err) => {
-      console.log(err);
-      pool.end();
-    });
-};
-
-/**
- * Create All Tables
+ * Creating All Tables
+ * @returns 
  */
 const createAllTables = () => {
-  createUserTable();
   createParcelTable();
 };
 /**
- * Drop All Tables
+ * delete all Tables
+ * @returns
  */
 const dropAllTables = () => {
-  dropUserTable();
   dropParcelTable();
 };
 
@@ -128,9 +85,7 @@ pool.on('remove', () => {
 
 module.exports = {
   createParcelTable,
-  createUserTable,
   createAllTables,
-  dropUserTable,
   dropParcelTable,
   dropAllTables,
 };

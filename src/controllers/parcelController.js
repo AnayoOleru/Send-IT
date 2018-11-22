@@ -10,15 +10,15 @@ import db from '../databaseConnection/dbconnection';
 */
 class ParcelController {
   /**
-   * Get All Parcels
+   * Static method: Gettng all Parcels
    * @param {object} req
    * @param {object} res
-   * @returns {object} reflections array
+   * @returns {object}
    */
   static async getAllParcels(req, res) {
-    const findAllQuery = 'SELECT * FROM parcel_db';
+    const findAllParcels = 'SELECT * FROM parcel_db';
     try {
-      const { rows, rowCount } = await db(findAllQuery);
+      const { rows, rowCount } = await db(findAllParcels);
       return res.status(200).send({ rows, rowCount });
     } catch (error) {
       return res.status(400).send(error);
@@ -26,7 +26,7 @@ class ParcelController {
   }
 
   /**
-   * get parcel by id
+   * Static method: Get parcel by id
    * @param {object} req
    * @param {object} res
    * @returns {object}
@@ -45,6 +45,7 @@ class ParcelController {
     }
   }
 
+
   /**
    * static method: Create A Parcel_db
    * @param {object} req
@@ -52,38 +53,34 @@ class ParcelController {
    * @returns {object} reflection object
    */
   static async createParcel(req, res) {
-    const text = `INSERT INTO
-      parcel_db(user_id, parcel_id, name_of_item, destination, sendee_name, sendee_phone_number, city_or_town, LGA, 
-        pickup_location, security_question, parcel_weight, answer, date_created, status)
+    const text = `INSERT INTO parcel_table(user_id, parcel_id, name_of_item, destination, 
+        sendee_name, sendee_phone_number, city_or_town, Lga, 
+        pickup_location, security_question, parcel_weight, answer, status)
       VALUES($1, $2, $3, $4, $5, $6, $7, &8, &9, &10, $11, $12, $13)
       returning *`;
     const values = [
       uuidv4(),
-      req.body.nameOfItem,
+      req.body.user_id,
+      req.body.parcel_id,
+      req.body.name_of_item,
       req.body.destination,
-      req.body.sendeeName,
-      req.body.sendeePhoneNumber,
-      req.body.cityOrTown,
-      req.body.LGA,
-      req.body.pickupLocation,
-      req.body.securityQuestion,
-      req.body.parcelWeight,
+      req.body.sendee_name,
+      req.body.sendee_phone_number,
+      req.body.city_or_town,
+      req.body.lga,
+      req.body.pickup_location,
+      req.body.security_question,
+      req.body.parcel_weight,
       req.body.answer,
+      req.body.status,
       moment(new Date()),
-      'processing',
     ];
-
     try {
       const { rows } = await db(text, values);
-      return res.status(201).send({
-        status: 201,
-        data: [{
-          message: 'parcel created',
-          order: rows[0],
-        }]
-      });
+      return res.status(201).send(rows[0]);
     } catch (error) {
       return res.status(400).send(error);
+      // return res.status().send('==================>', error);
     }
   }
 
@@ -96,39 +93,36 @@ class ParcelController {
    */
   static async cancelParcel(req, res) {
     const { parcelId } = req.params;
-    const text1 = 'SELECT * FROM parcel_db WHERE id = $1';
-    const text = 'UPDATE parcel_db SET status=\'cancelled\' WHERE id = $1 RETURNING *';
+    const text1 = 'SELECT * FROM parcel_table WHERE id = $1';
+    const text = 'UPDATE parcel_table SET status=\'cancelled\' WHERE id = $1 RETURNING *';
 
     try {
       const { rows: result } = await db(text, [parcelId]);
       if (result[0].status !== 'processing') {
         return res.status(401).send({
-          success: false,
-          message: 'You cannot change status',
+          message: 'Status order not found',
         });
       }
       const { rows } = await db(text, [parcelId]);
       res.status(200).send({
-        success: true,
         orders: rows[0],
       });
+      
     } catch (error) {
       return res.status(400).send({
-        status: false,
-        message: 'Parcel order not found',
+        message: 'No Parcel order found',
       });
     }
 
-    let parcelStatus;
-    // eslint-disable-next-line no-undef
-    parcel_id.forEach((parcel) => {
-      if (parcel.parcelId === parcelId) {
-        parcel.status = 'cancelled';
-        parcelStatus = parcel;
-      }
-    });
+    // let parcelStatus;
+    // parcel_id.forEach((parcel) => {
+    //   if (parcel.parcelId === parcelId) {
+    //     parcel.status = 'cancelled';
+    //     parcelStatus = parcel;
+    //   }
+    // });
 
-    return res.status(200).json(parcelStatus);
+    // return res.status(200).json(parcelStatus);
   }
 }
 

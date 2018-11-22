@@ -20,7 +20,7 @@ app.get('/api/v1', (req, res) => {
 });
 
 app.use('*', (req, res) => {
-  res.status(404).json({ message: 'Page Not Found. Please go to /api/v1 to use our api' });
+  res.status(404).json({ message: 'Page Not Found. Go to /api/v1 to use this api' });
 });
 
 app.set('port', (process.env.PORT || 3000));
