@@ -1,82 +1,89 @@
-import { randomBytes } from 'crypto';
-import parcelOrderDb from '../db/parcel';
+
+import moment from 'moment';
+import uuidv4 from 'uuidv4';
+import db from '../databaseConnection/dbconnection';
+
+
 /**
  * @exports
  * @class parcelController
 */
 class ParcelController {
   /**
-   * @staticmethod
-   * @param {object} req - Request Object
-   * @param {object} res - Response Object
-   * @returns {array} - Returns all parcels: Array of objects
+   * Static method: Gettng all Parcels
+   * @param {object} req
+   * @param {object} res
+   * @returns {object}
    */
-  static getAllParcels(req, res) {
-    return res.status(200).json(parcelOrderDb);
+  static async getAllParcels(req, res) {
+    const findAllParcels = 'SELECT * FROM parcel_db';
+    try {
+      const { rows, rowCount } = await db(findAllParcels);
+      return res.status(200).send({ rows, rowCount });
+    } catch (error) {
+      return res.status(400).send(error);
+    }
   }
 
   /**
- *
- * @staticmethod
- * @param {object} req - Request object
- * @param {object} res - Response object
- * @returns {object} - Returns a specific parcel object
- */
-  static getParcelById(req, res) {
+   * Static method: Get parcel by id
+   * @param {object} req
+   * @param {object} res
+   * @returns {object}
+  */
+  static async getParcelById(req, res) {
     const { parcelId } = req.params;
-    let parcelObject;
-    parcelOrderDb.forEach((parcel) => {
-      if (parcel.parcelId === parcelId) {
-        parcelObject = parcel;
+    const text = 'SELECT * FROM parcel_db WHERE id = $1';
+    try {
+      const { rows } = await db(text, [parcelId]);
+      if (!rows[0]) {
+        return res.status(404).send({ message: 'parcels not found' });
       }
-    });
-
-    return res.status(200).json(parcelObject);
+      return res.status(200).send(rows[0]);
+    } catch (error) {
+      return res.status(400).send(error);
+    }
   }
 
 
   /**
-   *
-   * @staticmethod
-   * @param {values} req - Request values into keys
-   * @param {object} res - Respond object
-   * @returns {array} - returns all key value pairs as object in array
-   *
+   * static method: Create A Parcel_db
+   * @param {object} req
+   * @param {object} res
+   * @returns {object} reflection object
    */
-  static createParcel(req, res) {
-    const {
-      userId,
-      nameOfItem,
-      destination,
-      sendeeName,
-      sendeePhoneNumber,
-      CityOrTown,
-      LGA,
-      pickupLocation,
-      parcelWeight,
-      SecurityQuestion,
-      answer,
-    } = req.body;
-
-    const parcelId = randomBytes(5).toString('hex');
-
-    parcelOrderDb.push({
-      parcelId,
-      userId,
-      nameOfItem,
-      destination,
-      sendeeName,
-      sendeePhoneNumber,
-      CityOrTown,
-      LGA,
-      pickupLocation,
-      parcelWeight,
-      SecurityQuestion,
-      answer,
-      status: 'proccessing'
-    });
-    return res.status(201).json(parcelOrderDb);
+  static async createParcel(req, res) {
+    const text = `INSERT INTO parcel_table(user_id, parcel_id, name_of_item, destination, 
+        sendee_name, sendee_phone_number, city_or_town, Lga, 
+        pickup_location, security_question, parcel_weight, answer, status)
+      VALUES($1, $2, $3, $4, $5, $6, $7, &8, &9, &10, $11, $12, $13)
+      returning *`;
+    const values = [
+      uuidv4(),
+      req.body.user_id,
+      req.body.parcel_id,
+      req.body.name_of_item,
+      req.body.destination,
+      req.body.sendee_name,
+      req.body.sendee_phone_number,
+      req.body.city_or_town,
+      req.body.lga,
+      req.body.pickup_location,
+      req.body.security_question,
+      req.body.parcel_weight,
+      req.body.answer,
+      req.body.status,
+      moment(new Date()),
+    ];
+    try {
+      const { rows } = await db(text, values);
+      return res.status(201).send(rows[0]);
+    } catch (error) {
+      return res.status(400).send(error);
+      // return res.status().send('==================>', error);
+    }
   }
+
 
   /**
    *@staticmethod
@@ -84,19 +91,38 @@ class ParcelController {
    * @param {object} res - Respond object
    * @returns{string} - Returns status string
    */
-  static cancelParcel(req, res) {
+  static async cancelParcel(req, res) {
     const { parcelId } = req.params;
+    const text1 = 'SELECT * FROM parcel_table WHERE id = $1';
+    const text = 'UPDATE parcel_table SET status=\'cancelled\' WHERE id = $1 RETURNING *';
 
-
-    let parcelStatus;
-    parcelOrderDb.forEach((parcel) => {
-      if (parcel.parcelId === parcelId) {
-        parcel.status = 'cancelled';
-        parcelStatus = parcel;
+    try {
+      const { rows: result } = await db(text, [parcelId]);
+      if (result[0].status !== 'processing') {
+        return res.status(401).send({
+          message: 'Status order not found',
+        });
       }
-    });
+      const { rows } = await db(text, [parcelId]);
+      res.status(200).send({
+        orders: rows[0],
+      });
+      
+    } catch (error) {
+      return res.status(400).send({
+        message: 'No Parcel order found',
+      });
+    }
 
-    return res.status(200).json(parcelStatus);
+    // let parcelStatus;
+    // parcel_id.forEach((parcel) => {
+    //   if (parcel.parcelId === parcelId) {
+    //     parcel.status = 'cancelled';
+    //     parcelStatus = parcel;
+    //   }
+    // });
+
+    // return res.status(200).json(parcelStatus);
   }
 }
 
