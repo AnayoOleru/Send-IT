@@ -25,12 +25,12 @@ const createParcelTable = () => {
         name_of_item VARCHAR(128) NOT NULL,
         destination VARCHAR(128) NOT NULL,
         sendee_name VARCHAR(128) NOT NULL,
-        sendee_phone_number REAL NOT NULL,
+        sendee_phone_number VARCHAR(128) NOT NULL,
         city_or_town VARCHAR(128) NOT NULL,
         lga VARCHAR(128) NOT NULL,
         pickup_location VARCHAR(128) NOT NULL,
         security_question VARCHAR(128) NOT NULL,
-        parcel_weight  REAL NOT NULL,
+        parcel_weight  VARCHAR(128) NOT NULL,
         answer VARCHAR(300) NOT NULL,
         status VARCHAR(40) NOT NULL,
         FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
@@ -51,13 +51,12 @@ const createParcelTable = () => {
  * Create User Table
  */
 const createUserTable = () => {
-  const queryText =
-    `CREATE TABLE IF NOT EXISTS
+  const queryText = `CREATE TABLE IF NOT EXISTS
       users(
         id UUID PRIMARY KEY,
         fullname VARCHAR(128) NOT NULL,
         email VARCHAR(128) UNIQUE NOT NULL,
-        phone_number REAL NOT NULL
+        phone_number VARCHAR(128) NOT NULL,
         password VARCHAR(128) NOT NULL,
         created_date TIMESTAMP,
         modified_date TIMESTAMP
@@ -72,14 +71,14 @@ const createUserTable = () => {
       console.log(err);
       pool.end();
     });
-}
+};
 
 
 /**
  * deleting Tables
  */
 const dropParcelTable = () => {
-  const queryText = 'DROP TABLE IF EXISTS parcel_table returning *';
+  const queryText = 'DROP TABLE IF EXISTS parcel_table';
   pool.query(queryText)
     .then((res) => {
       console.log(res);
@@ -95,7 +94,7 @@ const dropParcelTable = () => {
  * delete User Table
  */
 const dropUserTable = () => {
-  const queryText = 'DROP TABLE IF EXISTS users returning *';
+  const queryText = 'DROP TABLE IF EXISTS users';
   pool.query(queryText)
     .then((res) => {
       console.log(res);
@@ -126,7 +125,6 @@ const dropAllTables = () => {
 
 pool.on('remove', () => {
   console.log('client removed');
-  process.exit(0);
 });
 
 

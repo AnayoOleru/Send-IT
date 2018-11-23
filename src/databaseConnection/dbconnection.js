@@ -3,11 +3,10 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const string = process.env.NODE_ENV
-  ? ''
-  : process.env.DATABASE_URL;
+const string = process.env.DATABASE_URL;
 
 const pool = new Pool({
-  connectionString: string,
+  connectionString: string
 });
+
 export default (text, params) => pool.query(text, params);

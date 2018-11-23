@@ -1,8 +1,8 @@
 import express from 'express';
-import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
+import bodyParser from 'body-parser';
 import 'babel-polyfill';
-import users from './src/router/userRouter';
+// import users from './src/router/userRouter';
 import parcels from './src/router/parcelRouter';
 
 dotenv.config();
@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-app.use('/api/v1/users', users);
+// app.use('/api/v1/users', users);
 app.use('/api/v1/parcels', parcels);
 app.get('/api/v1', (req, res) => {
   res.send('I am Send-IT! Connection successful');

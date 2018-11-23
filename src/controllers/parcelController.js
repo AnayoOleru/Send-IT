@@ -1,5 +1,3 @@
-
-import moment from 'moment';
 import uuidv4 from 'uuidv4';
 import db from '../databaseConnection/dbconnection';
 
@@ -16,7 +14,7 @@ class ParcelController {
    * @returns {object}
    */
   static async getAllParcels(req, res) {
-    const findAllParcels = 'SELECT * FROM parcel_db';
+    const findAllParcels = 'SELECT * FROM parcel_table';
     try {
       const { rows, rowCount } = await db(findAllParcels);
       return res.status(200).send({ rows, rowCount });
@@ -33,7 +31,7 @@ class ParcelController {
   */
   static async getParcelById(req, res) {
     const { parcelId } = req.params;
-    const text = 'SELECT * FROM parcel_db WHERE id = $1';
+    const text = 'SELECT * FROM parcel_table WHERE id = $1';
     try {
       const { rows } = await db(text, [parcelId]);
       if (!rows[0]) {
@@ -53,15 +51,15 @@ class ParcelController {
    * @returns {object} reflection object
    */
   static async createParcel(req, res) {
-    const text = `INSERT INTO parcel_table(user_id, parcel_id, name_of_item, destination, 
-        sendee_name, sendee_phone_number, city_or_town, Lga, 
+    // console.log(uuidv4())
+    console.log(req.body)
+    const text = `INSERT INTO parcel_table(user_id, name_of_item, destination,
+        sendee_name, sendee_phone_number, city_or_town, Lga,
         pickup_location, security_question, parcel_weight, answer, status)
-      VALUES($1, $2, $3, $4, $5, $6, $7, &8, &9, &10, $11, $12, $13)
+      VALUES($1, $2, $3, $4, $5, $6, $7, &8, &9, &10, $11, $12)
       returning *`;
     const values = [
       uuidv4(),
-      req.body.user_id,
-      req.body.parcel_id,
       req.body.name_of_item,
       req.body.destination,
       req.body.sendee_name,
@@ -73,14 +71,15 @@ class ParcelController {
       req.body.parcel_weight,
       req.body.answer,
       req.body.status,
-      moment(new Date()),
     ];
+
     try {
+      // console.log(text, values);
       const { rows } = await db(text, values);
       return res.status(201).send(rows[0]);
     } catch (error) {
+      console.log(error);
       return res.status(400).send(error);
-      // return res.status().send('==================>', error);
     }
   }
 
@@ -93,7 +92,6 @@ class ParcelController {
    */
   static async cancelParcel(req, res) {
     const { parcelId } = req.params;
-    const text1 = 'SELECT * FROM parcel_table WHERE id = $1';
     const text = 'UPDATE parcel_table SET status=\'cancelled\' WHERE id = $1 RETURNING *';
 
     try {
@@ -107,7 +105,6 @@ class ParcelController {
       res.status(200).send({
         orders: rows[0],
       });
-      
     } catch (error) {
       return res.status(400).send({
         message: 'No Parcel order found',
